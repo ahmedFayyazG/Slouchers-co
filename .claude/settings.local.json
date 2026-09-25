@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(export NODE_OPTIONS=\"--dns-result-order=ipv4first\")",
+      "Bash(shopify organization *)",
+      "Bash(shopify store *)",
+      "Bash(shopify theme *)",
+      "Bash(export NODE_OPTIONS=\"--dns-result-order=ipv4first --max-http-header-size=16384\")",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -m 'Initial Slouchers theme commit *)",
+      "Bash(git branch *)",
+      "Bash(git remote *)"
+    ]
+  }
+}

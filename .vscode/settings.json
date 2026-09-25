@@ -1,0 +1,6 @@
+{
+  "files.associations": { "*.liquid": "liquid" },
+  "editor.formatOnSave": true,
+  "[liquid]": { "editor.defaultFormatter": "Shopify.theme-check-vscode" },
+  "themeCheck.checkOnSave": true
+}
