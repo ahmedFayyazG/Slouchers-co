@@ -1,0 +1,16 @@
+<section class="sl-section sl-category-rail">
+  <div class="sl-section-heading"><h2>{{ section.settings.heading | escape }}</h2></div>
+  <div class="sl-scroll-wrap"><div class="sl-category-rail__track">
+    {% for block in section.blocks %}
+      {% assign item = block.settings.collection %}
+      <a class="sl-category-card" href="{{ item.url | default: routes.all_products_collection_url }}" {{ block.shopify_attributes }}>
+        <div class="sl-category-card__media">{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 1100 | image_tag: loading: 'lazy', widths: '400, 700, 1100', alt: block.settings.image.alt }}{% elsif item.image != blank %}{{ item.image | image_url: width: 1100 | image_tag: loading: 'lazy', widths: '400, 700, 1100', alt: item.image.alt }}{% else %}{{ 'collection-1' | placeholder_svg_tag }}{% endif %}</div>
+        <div class="sl-category-card__info"><h3>{{ block.settings.title | default: item.title | escape }}</h3>{% if item != blank %}<span>{{ item.products_count }} products</span>{% endif %}</div>
+      </a>
+    {% endfor %}
+  </div><button class="sl-rail-next" type="button" aria-label="Scroll categories right" data-scroll-next>→</button></div>
+  {% if section.settings.link_label != blank %}<a class="sl-under-link" href="{{ section.settings.link_url | default: routes.all_products_collection_url }}">{{ section.settings.link_label | escape }}</a>{% endif %}
+</section>
+{% schema %}
+{"name":"Category rail","settings":[{"type":"text","id":"heading","label":"Heading","default":"Shop by category"},{"type":"text","id":"link_label","label":"Link label","default":"View all"},{"type":"url","id":"link_url","label":"Link destination"}],"blocks":[{"type":"category","name":"Category","settings":[{"type":"collection","id":"collection","label":"Collection"},{"type":"text","id":"title","label":"Optional title"},{"type":"image_picker","id":"image","label":"Optional photograph"}]}],"presets":[{"name":"Category rail","blocks":[{"type":"category"},{"type":"category"},{"type":"category"}]}]}
+{% endschema %}

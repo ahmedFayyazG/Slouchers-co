@@ -1,52 +1,23 @@
-{% comment %}
-  This section is used in the product template to render product page with
-  media, content, and add-to-cart form.
-
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/product
-{% endcomment %}
-
-<div class="product-images">
-  {% for image in product.images %}
-    {% render 'image', class: 'product-image', image: image %}
-  {% endfor %}
-</div>
-
-<div class="product-info">
-  <h1>{{ product.title }}</h1>
-  <p>{{ product.price | money }}</p>
-  <p>{{ product.description }}</p>
-</div>
-
-<div class="product-form">
-  {% form 'product', product %}
-    {% assign current_variant = product.selected_or_first_available_variant %}
-
-    <select name="id">
-      {% for variant in product.variants %}
-        <option
-          value="{{ variant.id }}"
-          {% if variant == current_variant %}
-            selected="selected"
-          {% endif %}
-        >
-          {{ variant.title }} - {{ variant.price | money }}
-        </option>
-      {% endfor %}
-    </select>
-
-    <input type="text" name="quantity" min="1" value="1">
-
-    <input type="submit" value="Add to cart">
-    {{ form | payment_button }}
-  {% endform %}
-</div>
-
+<section class="sl-pdp sl-section">
+  <div class="sl-pdp__gallery">
+    <div class="sl-pdp__main-media">{% if product.featured_media != blank %}{{ product.featured_media.preview_image | image_url: width: 1500 | image_tag: loading: 'eager', widths: '600, 900, 1200, 1500', alt: product.featured_media.alt, id: 'sl-main-product-image' }}{% else %}{{ 'product-1' | placeholder_svg_tag }}{% endif %}</div>
+    {% if product.media.size > 1 %}<div class="sl-pdp__thumbs">{% for media in product.media %}<button type="button" class="sl-pdp__thumb" data-product-image="{{ media.preview_image | image_url: width: 1500 }}" aria-label="View product image {{ forloop.index }}">{{ media.preview_image | image_url: width: 180 | image_tag: loading: 'lazy', alt: media.alt }}</button>{% endfor %}</div>{% endif %}
+  </div>
+  <div class="sl-pdp__details">
+    <nav class="sl-breadcrumb" aria-label="Breadcrumb"><a href="{{ routes.root_url }}">Home</a><span>/</span><a href="{{ routes.all_products_collection_url }}">Sofas</a><span>/</span><span>{{ product.title | escape }}</span></nav>
+    <h1>{{ product.title | escape }}</h1><p class="sl-pdp__price">{{ product.selected_or_first_available_variant.price | money }}{% if product.compare_at_price > product.price %}<s>{{ product.compare_at_price | money }}</s>{% endif %}</p>
+    <div class="sl-pdp__intro">{{ product.description | strip_html | truncatewords: 35 }}</div>
+    <ul class="sl-pdp__benefits"><li>Made for everyday lounging</li><li>Thoughtfully crafted details</li><li>Delivery information at checkout</li></ul>
+    {% form 'product', product, class: 'sl-pdp__form' %}
+      {% assign current_variant = product.selected_or_first_available_variant %}
+      {% unless product.has_only_default_variant %}<label for="product-variant-{{ section.id }}">Choose your option</label><select id="product-variant-{{ section.id }}" name="id">{% for variant in product.variants %}<option value="{{ variant.id }}" {% if variant == current_variant %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>{{ variant.title | escape }} — {{ variant.price | money }}{% unless variant.available %} — Sold out{% endunless %}</option>{% endfor %}</select>{% else %}<input type="hidden" name="id" value="{{ current_variant.id }}">{% endunless %}
+      <label for="product-quantity-{{ section.id }}">Quantity</label><input id="product-quantity-{{ section.id }}" type="number" min="1" name="quantity" value="1">
+      <button class="sl-add-to-cart" type="submit" {% unless current_variant.available %}disabled{% endunless %}>{% if current_variant.available %}Add to bag — {{ current_variant.price | money }}{% else %}Sold out{% endif %}</button>
+      {{ form | payment_button }}
+    {% endform %}
+    <div class="sl-pdp__accordions"><details><summary>Product details <span>+</span></summary><div>{{ product.description }}</div></details><details><summary>Delivery &amp; returns <span>+</span></summary><div>{{ section.settings.delivery_text }}</div></details></div>
+  </div>
+</section>
 {% schema %}
-{
-  "name": "t:general.product",
-  "settings": [],
-  "disabled_on": {
-    "groups": ["header", "footer"]
-  }
-}
+{"name":"Product details","settings":[{"type":"richtext","id":"delivery_text","label":"Delivery and returns information","default":"<p>Add your delivery and returns information here.</p>"}]}
 {% endschema %}

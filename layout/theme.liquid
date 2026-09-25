@@ -19,6 +19,8 @@
 
     {% # Load and preload the critical CSS %}
     {{ 'critical.css' | asset_url | stylesheet_tag: preload: true }}
+    {{ 'slouchers.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'slouchers.js' | asset_url }}" defer></script>
 
     {% # Social, title, etc. %}
     {% render 'meta-tags' %}

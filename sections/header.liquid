@@ -1,77 +1,22 @@
-<header>
-  <h2 class="header__title">
-    {{ shop.name | link_to: routes.root_url }}
-  </h2>
-
-  <div class="header__menu">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
-
-  <div class="header__icons">
-    {% if shop.customer_accounts_enabled %}
-      <shopify-account menu="{{ section.settings.customer_account_menu }}">
-        {{ 'icon-account.svg' | inline_asset_content }}
-      </shopify-account>
+<div class="sl-announcement">{{ section.settings.announcement | escape }}</div>
+<header class="sl-header">
+  <a class="sl-wordmark" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">SLOUCHERS<span>&amp;CO.</span></a>
+  <nav class="sl-desktop-nav" aria-label="Primary navigation">
+    {% if section.settings.menu != blank %}
+      {% for link in section.settings.menu.links %}
+        {% if link.links != blank %}
+          <details class="sl-nav-dropdown"><summary>{{ link.title | escape }}</summary><div class="sl-nav-dropdown__panel">{% for child in link.links %}<a href="{{ child.url }}">{{ child.title | escape }}</a>{% endfor %}</div></details>
+        {% else %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endif %}
+      {% endfor %}
+    {% else %}
+      <a href="{{ routes.all_products_collection_url }}">New arrivals</a>
+      <details class="sl-nav-dropdown"><summary>Products</summary><div class="sl-nav-dropdown__panel"><a href="{{ routes.all_products_collection_url }}">All sofas</a><a href="{{ routes.collections_url }}/modular-sofas">Modular sofas</a><a href="{{ routes.collections_url }}/corner-sofas">Corner sofas</a><a href="{{ routes.collections_url }}/sofa-beds">Sofa beds</a></div></details>
+      <a href="/pages/about-us">About</a>
     {% endif %}
-
-    <a href="{{ routes.cart_url }}">
-      {% if cart.item_count > 0 %}
-        <sup>{{ cart.item_count }}</sup>
-      {% endif %}
-
-      {{ 'icon-cart.svg' | inline_asset_content }}
-    </a>
-  </div>
+  </nav>
+  <div class="sl-header-actions"><a href="{{ routes.search_url }}">Search</a><a href="{{ routes.cart_url }}">Bag ({{ cart.item_count }})</a></div>
+  <details class="sl-mobile-menu"><summary aria-label="Open menu">☰</summary><nav aria-label="Mobile navigation"><a href="{{ routes.all_products_collection_url }}">Shop all</a>{% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}<a href="/pages/about-us">About</a><a href="{{ routes.search_url }}">Search</a></nav></details>
 </header>
-
-{% stylesheet %}
-  header {
-    height: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  header a {
-    position: relative;
-    text-decoration: none;
-    color: var(--color-foreground);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  header a sup {
-    position: absolute;
-    left: 100%;
-    overflow: hidden;
-    max-width: var(--page-margin);
-  }
-  header svg {
-    width: 2rem;
-  }
-  header .header__menu,
-  header .header__icons {
-    display: flex;
-    gap: 1rem;
-  }
-{% endstylesheet %}
-
 {% schema %}
-{
-  "name": "t:general.header",
-  "settings": [
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
-    },
-    {
-      "type": "link_list",
-      "id": "customer_account_menu",
-      "label": "t:labels.customer_account_menu",
-      "default": "customer-account-main-menu"
-    }
-  ]
-}
+{"name":"Header","settings":[{"type":"text","id":"announcement","label":"Announcement","default":"MADE FOR LIVING. MADE TO LAST."},{"type":"link_list","id":"menu","label":"Navigation menu"}]}
 {% endschema %}

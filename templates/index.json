@@ -1,20 +1,277 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
-    "main": {
-      "type": "hello-world",
+    "hero": {
+      "type": "sl-hero",
       "settings": {}
+    },
+    "trending": {
+      "type": "sl-product-rail",
+      "settings": {
+        "heading": "Trending now",
+        "link_label": "See our best sellers"
+      }
+    },
+    "categories": {
+      "type": "sl-category-rail",
+      "settings": {
+        "heading": "Shop by category",
+        "link_label": "View all"
+      },
+      "blocks": {
+        "sofas": {
+          "type": "category",
+          "settings": {
+            "title": "Sofas"
+          }
+        },
+        "corners": {
+          "type": "category",
+          "settings": {
+            "title": "Corner sofas"
+          }
+        },
+        "chairs": {
+          "type": "category",
+          "settings": {
+            "title": "Armchairs"
+          }
+        }
+      },
+      "block_order": [
+        "sofas",
+        "corners",
+        "chairs"
+      ]
+    },
+    "modular": {
+      "type": "sl-editorial",
+      "settings": {
+        "heading": "Arrange, stretch, gather — modular comfort for your home.",
+        "body": "",
+        "button_label": "Shop modular sofas"
+      }
+    },
+    "arrivals": {
+      "type": "sl-product-rail",
+      "settings": {
+        "heading": "New arrivals",
+        "link_label": "See full collection"
+      }
+    },
+    "types": {
+      "type": "sl-category-rail",
+      "settings": {
+        "heading": "Shop sofas by type",
+        "link_label": ""
+      },
+      "blocks": {
+        "fabric": {
+          "type": "category",
+          "settings": {
+            "title": "Fabric sofas"
+          }
+        },
+        "leather": {
+          "type": "category",
+          "settings": {
+            "title": "Leather sofas"
+          }
+        },
+        "modular": {
+          "type": "category",
+          "settings": {
+            "title": "Modular sofas"
+          }
+        }
+      },
+      "block_order": [
+        "fabric",
+        "leather",
+        "modular"
+      ]
+    },
+    "story": {
+      "type": "sl-editorial",
+      "settings": {
+        "heading": "A little more comfort. A lot more character.",
+        "body": "Thoughtfully made furniture for homes that feel like you.",
+        "button_label": "Discover our story",
+        "split": true
+      }
+    },
+    "faq": {
+      "type": "sl-faq",
+      "settings": {},
+      "blocks": {
+        "comfort": {
+          "type": "question",
+          "settings": {
+            "question": "Comfort & construction",
+            "answer": "<p>Tell customers about the construction and comfort of your sofas.</p>"
+          }
+        },
+        "delivery": {
+          "type": "question",
+          "settings": {
+            "question": "Delivery & returns",
+            "answer": "<p>Add your delivery and returns information.</p>"
+          }
+        },
+        "swatches": {
+          "type": "question",
+          "settings": {
+            "question": "Can I order fabric samples?",
+            "answer": "<p>Add details about samples and fabrics.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "comfort",
+        "delivery",
+        "swatches"
+      ]
+    },
+    "moments": {
+      "type": "sl-image-rail",
+      "settings": {
+        "heading": "Made for the moments that matter.",
+        "description": "Life looks better from the sofa."
+      },
+      "blocks": {
+        "photo1": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo2": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo3": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo4": {
+          "type": "photo",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "photo1",
+        "photo2",
+        "photo3",
+        "photo4"
+      ]
+    },
+    "swatches": {
+      "type": "sl-image-split",
+      "settings": {
+        "heading": "Explore the details"
+      },
+      "blocks": {
+        "fabric": {
+          "type": "card",
+          "settings": {
+            "title": "Fabric & leather",
+            "description": "Find the finish that feels like you."
+          }
+        },
+        "colours": {
+          "type": "card",
+          "settings": {
+            "title": "Colours & textures",
+            "description": "Your perfect sofa begins with the little details."
+          }
+        }
+      },
+      "block_order": [
+        "fabric",
+        "colours"
+      ]
+    },
+    "statement": {
+      "type": "sl-statement",
+      "settings": {
+        "heading": "Something feels different. It feels like home.",
+        "link_label": "Discover Slouchers & Co."
+      }
+    },
+    "living": {
+      "type": "sl-image-rail",
+      "settings": {
+        "heading": "Make yourself at home",
+        "description": "The latest in interiors and living from our community."
+      },
+      "blocks": {
+        "photo1": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo2": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo3": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo4": {
+          "type": "photo",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "photo1",
+        "photo2",
+        "photo3",
+        "photo4"
+      ]
+    },
+    "collections": {
+      "type": "sl-category-rail",
+      "settings": {
+        "heading": "Shop by sofa collection",
+        "link_label": ""
+      },
+      "blocks": {
+        "one": {
+          "type": "category",
+          "settings": {
+            "title": "The lounge collection"
+          }
+        },
+        "two": {
+          "type": "category",
+          "settings": {
+            "title": "The modular collection"
+          }
+        },
+        "three": {
+          "type": "category",
+          "settings": {
+            "title": "The classics"
+          }
+        }
+      },
+      "block_order": [
+        "one",
+        "two",
+        "three"
+      ]
     }
   },
   "order": [
-    "main"
+    "hero",
+    "trending",
+    "categories",
+    "modular",
+    "arrivals",
+    "types",
+    "moments",
+    "swatches",
+    "statement",
+    "faq",
+    "living",
+    "collections",
+    "story"
   ]
 }

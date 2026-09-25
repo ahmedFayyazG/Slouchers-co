@@ -1,0 +1,20 @@
+{% liquid
+  assign chosen_collection = section.settings.collection
+  if chosen_collection == blank
+    assign chosen_collection = collections.all
+  endif
+%}
+<section class="sl-section sl-product-rail">
+  <div class="sl-section-heading"><h2>{{ section.settings.heading | escape }}</h2></div>
+  <div class="sl-scroll-wrap"><div class="sl-product-rail__track">
+    {% for product in chosen_collection.products limit: 10 %}
+      {% render 'sl-product-card', product: product %}
+    {% else %}
+      {% for i in (1..4) %}<div class="sl-product-card"><div class="sl-product-card__media">{{ 'product-1' | placeholder_svg_tag }}</div><div class="sl-product-card__info"><h3>Product {{ i }}</h3></div></div>{% endfor %}
+    {% endfor %}
+  </div><button class="sl-rail-next" type="button" aria-label="Scroll products right" data-scroll-next>→</button></div>
+  <a class="sl-under-link" href="{{ chosen_collection.url | default: routes.all_products_collection_url }}">{{ section.settings.link_label | escape }}</a>
+</section>
+{% schema %}
+{"name":"Product rail","settings":[{"type":"text","id":"heading","label":"Heading","default":"Trending now"},{"type":"collection","id":"collection","label":"Products from collection"},{"type":"text","id":"link_label","label":"Link label","default":"See our best sellers"}],"presets":[{"name":"Product rail"}]}
+{% endschema %}

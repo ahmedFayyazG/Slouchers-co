@@ -1,37 +1,11 @@
-{% comment %}
-  This section is used in the cart template to render /cart page with an
-  overview of the items in customer's cart.
-
-  https://shopify.dev/docs/storefronts/themes/architecture/templates/cart
-{% endcomment %}
-
-<h1>{{ 'cart.title' | t }}</h1>
-
-<form action="{{ routes.cart_url }}" method="post">
-  <table>
-    {% for item in cart.items %}
-      <tr>
-        <td>
-          {% render 'image', image: item.image, url: item.url %}
-        </td>
-        <td>
-          <p>{{ item.product.title }}</p>
-          {{ 'cart.remove' | t | link_to: item.url_to_remove }}
-        </td>
-        <td>
-          <input type="text" name="updates[]" value="{{ item.quantity }}">
-          <input type="submit" value="{{ 'cart.update' | t }}">
-        </td>
-      </tr>
-    {% endfor %}
-  </table>
-
-  <input type="submit" name="checkout" value="{{ 'cart.checkout' | t }}">
-</form>
-
+<section class="sl-cart sl-section">
+  <h1>Your bag</h1>
+  {% if cart.item_count == 0 %}<p>Your bag is empty.</p><a class="sl-button" href="{{ routes.all_products_collection_url }}">Continue shopping</a>{% else %}
+  <form action="{{ routes.cart_url }}" method="post">
+    <div class="sl-cart__items">{% for item in cart.items %}<div class="sl-cart__item">{% if item.image %}<a href="{{ item.url }}">{{ item.image | image_url: width: 300 | image_tag: loading: 'lazy', alt: item.image.alt }}</a>{% endif %}<div><a href="{{ item.url }}"><h2>{{ item.product.title | escape }}</h2></a><p>{{ item.variant.title | escape }}</p><a href="{{ item.url_to_remove }}">Remove</a></div><div><span>{{ item.final_line_price | money }}</span><label for="quantity-{{ forloop.index }}">Quantity</label><input id="quantity-{{ forloop.index }}" type="number" min="0" name="updates[]" value="{{ item.quantity }}"></div></div>{% endfor %}</div>
+    <div class="sl-cart__summary"><button type="submit" name="update">Update bag</button><p>Subtotal <strong>{{ cart.total_price | money }}</strong></p><button class="sl-add-to-cart" type="submit" name="checkout">Checkout</button></div>
+  </form>{% endif %}
+</section>
 {% schema %}
-{
-  "name": "t:general.cart",
-  "settings": []
-}
+{"name":"Cart","settings":[]}
 {% endschema %}
