@@ -7,33 +7,39 @@
     "trending": {
       "type": "sl-product-rail",
       "settings": {
-        "heading": "Trending now",
-        "link_label": "See our best sellers"
+        "heading": "Featured sofas",
+        "link_label": "See all 50 sofas",
+        "collection": "slouchers",
+        "offset": 0
       }
     },
     "categories": {
       "type": "sl-category-rail",
       "settings": {
-        "heading": "Shop by category",
-        "link_label": "View all"
+        "heading": "Explore the sofas",
+        "link_label": "View all sofas",
+        "link_url": "/collections/slouchers"
       },
       "blocks": {
         "sofas": {
           "type": "category",
           "settings": {
-            "title": "Sofas"
+            "title": "Luxury U-Shape Sofa",
+            "product": "luxury-u-shape-sofa-velvet-fabric"
           }
         },
         "corners": {
           "type": "category",
           "settings": {
-            "title": "Corner sofas"
+            "title": "Verona Chesterfield",
+            "product": "luxury-verona-2c3-chesterfield-sofa-modern-beige-living-room"
           }
         },
         "chairs": {
           "type": "category",
           "settings": {
-            "title": "Armchairs"
+            "title": "Borios Corner Sofa",
+            "product": "borios-3c1-corner-sofa-blue-velvet-luxury-suite"
           }
         }
       },
@@ -54,33 +60,39 @@
     "arrivals": {
       "type": "sl-product-rail",
       "settings": {
-        "heading": "New arrivals",
-        "link_label": "See full collection"
+        "heading": "More to love",
+        "link_label": "See full collection",
+        "collection": "slouchers",
+        "offset": 10
       }
     },
     "types": {
       "type": "sl-category-rail",
       "settings": {
-        "heading": "Shop sofas by type",
-        "link_label": ""
+        "heading": "Made for lounging",
+        "link_label": "View all sofas",
+        "link_url": "/collections/slouchers"
       },
       "blocks": {
         "fabric": {
           "type": "category",
           "settings": {
-            "title": "Fabric sofas"
+            "title": "Khalifa Sofa Set",
+            "product": "khalifa-3-2-sofa-set-luxury-velvet"
           }
         },
         "leather": {
           "type": "category",
           "settings": {
-            "title": "Leather sofas"
+            "title": "Leather Recliner",
+            "product": "grey-leather-gel-recliner-3-seater-2-seat-or-armchair-sofa"
           }
         },
         "modular": {
           "type": "category",
           "settings": {
-            "title": "Modular sofas"
+            "title": "Alan Chaise",
+            "product": "alan-chaise-corner-sofa-luxury-velvet"
           }
         }
       },
@@ -229,26 +241,30 @@
     "collections": {
       "type": "sl-category-rail",
       "settings": {
-        "heading": "Shop by sofa collection",
-        "link_label": ""
+        "heading": "Find your favourite",
+        "link_label": "View all sofas",
+        "link_url": "/collections/slouchers"
       },
       "blocks": {
         "one": {
           "type": "category",
           "settings": {
-            "title": "The lounge collection"
+            "title": "Borios Chaise",
+            "product": "luxury-square-borios-light-beige-2-seater-sofa-with-chaise"
           }
         },
         "two": {
           "type": "category",
           "settings": {
-            "title": "The modular collection"
+            "title": "Lilly U-Shape",
+            "product": "lilly-u-shape-sofa-luxury-velvet"
           }
         },
         "three": {
           "type": "category",
           "settings": {
-            "title": "The classics"
+            "title": "Modern Corner Sofa",
+            "product": "modern-black-l-shape-corner-sofa-240x240cm-patterned-cushion"
           }
         }
       },

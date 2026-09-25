@@ -15,12 +15,12 @@ The CLI prints a local preview URL. This does not publish the theme.
 ## Set up in the theme editor
 
 1. Upload your own hero photograph in **Homepage → Editorial hero**.
-2. Assign the collections and optional photographs in both **Category rail** sections.
-3. Select collections for **Trending now** and **New arrivals** product rails.
+2. The category rails already use nine featured products from the Slouchers selection. Choose different products in the theme editor to change the cards.
+3. The two product rails already point at the Slouchers collection of 50 selected products. Edit the collection or offset if you want a different order.
 4. Add your own photography and copy to both **Editorial feature** sections.
 5. Set the navigation menu in **Header** and update the FAQs and delivery copy.
 
-Until images are assigned, image areas display Shopify placeholders. Product imagery uses the images already attached to your store products.
+Editorial image areas display Shopify placeholders until you assign your own photographs. Product and featured card imagery comes from the products already in your Slouchers Shopify store. The selected products are maintained in the Slouchers collection, rather than copied into theme assets.
 
 ## Structure
 
