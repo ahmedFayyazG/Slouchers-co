@@ -1,57 +1,13 @@
-<footer>
-  <div class="footer__copyright">
-    &copy;
-    {{ 'now' | date: '%Y' }}
-    {{ shop.name | link_to: routes.root_url }}, {{ powered_by_link }}
+<footer class="sl-footer">
+  <a class="sl-footer-wordmark" href="{{ routes.root_url }}">SLOUCHERS<span>&amp;CO.</span></a>
+  <div class="sl-footer-grid">
+    <div><h2>About</h2><a href="/pages/about-us">Our story</a><a href="{{ routes.all_products_collection_url }}">Shop sofas</a><a href="/blogs/news">Journal</a></div>
+    <div><h2>Help &amp; advice</h2><a href="/pages/contact">Contact us</a><a href="/pages/delivery-returns">Delivery &amp; returns</a><a href="/pages/faq">FAQs</a></div>
+    <div><h2>Follow along</h2>{% if section.settings.instagram != blank %}<a href="{{ section.settings.instagram }}">Instagram</a>{% endif %}{% if section.settings.facebook != blank %}<a href="{{ section.settings.facebook }}">Facebook</a>{% endif %}</div>
+    <div class="sl-footer-newsletter"><h2>Subscribe to our newsletter</h2><p>Fresh ideas and good furniture, straight to your inbox.</p>{% form 'customer' %}<input type="hidden" name="contact[tags]" value="newsletter"><label class="visually-hidden" for="footer-email">Email address</label><input id="footer-email" type="email" name="contact[email]" placeholder="Enter email" required><button type="submit">SIGN UP ↗</button>{% if form.posted_successfully? %}<p>Thanks for signing up.</p>{% endif %}{% endform %}</div>
   </div>
-
-  <div class="footer__links">
-    {% for link in section.settings.menu.links %}
-      {{ link.title | link_to: link.url }}
-    {% endfor %}
-  </div>
-
-  <div class="footer__payment">
-    {% if section.settings.show_payment_icons %}
-      {% for type in shop.enabled_payment_types %}
-        {{ type | payment_type_svg_tag }}
-      {% endfor %}
-    {% endif %}
-  </div>
+  <div class="sl-footer-bottom"><small>© {{ 'now' | date: '%Y' }} {{ shop.name | escape }}. All rights reserved.</small><div>{% for type in shop.enabled_payment_types %}{{ type | payment_type_svg_tag }}{% endfor %}</div></div>
 </footer>
-
-{% stylesheet %}
-  footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 2rem;
-  }
-  footer a {
-    text-decoration: none;
-    color: var(--color-foreground);
-  }
-  footer .footer__links,
-  footer .footer__payment {
-    display: flex;
-    gap: 1rem;
-  }
-{% endstylesheet %}
-
 {% schema %}
-{
-  "name": "t:general.footer",
-  "settings": [
-    {
-      "type": "link_list",
-      "id": "menu",
-      "label": "t:labels.menu"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "t:labels.show_payment_icons",
-      "default": true
-    }
-  ]
-}
+{"name":"Footer","settings":[{"type":"url","id":"instagram","label":"Instagram URL"},{"type":"url","id":"facebook","label":"Facebook URL"}]}
 {% endschema %}

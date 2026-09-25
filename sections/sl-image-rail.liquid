@@ -1,0 +1,8 @@
+<section class="sl-section sl-image-rail">
+  <h2>{{ section.settings.heading | escape }}</h2>
+  {% if section.settings.description != blank %}<p>{{ section.settings.description | escape }}</p>{% endif %}
+  <div class="sl-scroll-wrap"><div class="sl-image-rail__track">{% for block in section.blocks %}<div class="sl-image-rail__frame" {{ block.shopify_attributes }}>{% if block.settings.image != blank %}{{ block.settings.image | image_url: width: 1100 | image_tag: loading: 'lazy', widths: '400, 700, 1100', alt: block.settings.image.alt }}{% else %}{{ 'lifestyle-1' | placeholder_svg_tag }}{% endif %}</div>{% endfor %}</div><button class="sl-rail-next" type="button" aria-label="Scroll photographs right" data-scroll-next>→</button></div>
+</section>
+{% schema %}
+{"name":"Photograph rail","settings":[{"type":"text","id":"heading","label":"Heading","default":"Make yourself at home"},{"type":"text","id":"description","label":"Description"}],"blocks":[{"type":"photo","name":"Photograph","settings":[{"type":"image_picker","id":"image","label":"Photograph"}]}],"presets":[{"name":"Photograph rail","blocks":[{"type":"photo"},{"type":"photo"},{"type":"photo"},{"type":"photo"}]}]}
+{% endschema %}
