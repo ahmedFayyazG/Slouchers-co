@@ -6,16 +6,18 @@
 %}
 <section class="sd-hero" aria-label="{{ section.settings.heading | escape }}">
   <div class="sd-hero__media">
-    {% if section.settings.image != blank %}
+    {% if section.settings.video != blank %}
+      {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, controls: false, playsinline: true, image_size: '2400x' }}
+    {% elsif section.settings.image != blank %}
       {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1500, 2000, 2400', alt: section.settings.image.alt }}
-    {% elsif hero_product.featured_image != blank %}
-      {{ hero_product.featured_image | image_url: width: 2000 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1500, 2000', alt: hero_product.title }}
+    {% else %}
+      <video autoplay muted loop playsinline preload="metadata" poster="{{ 'reference-hero.jpg' | asset_url }}"><source src="{{ 'reference-hero.mp4' | asset_url }}" type="video/mp4"></video>
     {% endif %}
   </div>
   <div class="sd-hero__shade"></div>
   <div class="sd-hero__content"><h1>{{ section.settings.heading | escape | newline_to_br }}</h1><a class="sd-outline-button sd-outline-button--light" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a></div>
-  <span class="sd-hero__index">01 / 01</span>
+  <button class="sd-hero__play" type="button" aria-label="Pause video" data-hero-play><span aria-hidden="true">Ⅱ</span></button>
 </section>
 {% schema %}
-{"name":"Editorial hero","settings":[{"type":"image_picker","id":"image","label":"Lifestyle image"},{"type":"product","id":"featured_product","label":"Fallback store product"},{"type":"textarea","id":"heading","label":"Heading","default":"Feel right\nat home."},{"type":"text","id":"button_label","label":"Button label","default":"Shop Now"},{"type":"url","id":"button_link","label":"Button link"}],"presets":[{"name":"Editorial hero"}]}
+{"name":"Editorial hero","settings":[{"type":"video","id":"video","label":"Your own hero video"},{"type":"image_picker","id":"image","label":"Your own hero image"},{"type":"product","id":"featured_product","label":"Fallback store product"},{"type":"textarea","id":"heading","label":"Heading","default":"Home should\nfeel like Slouchers."},{"type":"text","id":"button_label","label":"Button label","default":"Shop Now"},{"type":"url","id":"button_link","label":"Button link"}],"presets":[{"name":"Editorial hero"}]}
 {% endschema %}

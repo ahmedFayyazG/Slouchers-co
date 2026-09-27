@@ -1,0 +1,17 @@
+<section class="sd-feature">
+  <div class="sd-feature__copy"><span>{{ section.settings.eyebrow | escape }}</span><h2>{{ section.settings.heading | escape }}</h2><p>{{ section.settings.body | escape }}</p><a class="sd-outline-button" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.link_label | escape }}</a></div>
+  <div class="sd-feature__visual">
+    {% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'lazy', widths: '800, 1300, 1800', alt: section.settings.heading }}{% else %}<img src="{{ 'reference-feature-main.jpg' | asset_url }}" loading="lazy" width="1600" height="900" alt="Warm interior design studio">{% endif %}
+    <div class="sd-feature__gallery">
+      <img src="{{ 'reference-feature-01.jpg' | asset_url }}" loading="lazy" width="900" height="900" alt="">
+      <img src="{{ 'reference-feature-02.jpg' | asset_url }}" loading="lazy" width="900" height="900" alt="">
+      <img src="{{ 'reference-feature-03.jpg' | asset_url }}" loading="lazy" width="900" height="900" alt="">
+      <img src="{{ 'reference-feature-04.jpg' | asset_url }}" loading="lazy" width="900" height="900" alt="">
+    </div>
+    {% assign showcase = section.settings.collection | default: collections['slouchers'] %}
+    <div class="sd-feature__products">{% for product in showcase.products limit: 4 %}{% render 'sl-product-card', product: product %}{% endfor %}</div>
+  </div>
+</section>
+{% schema %}
+{"name":"Editorial feature collage","settings":[{"type":"text","id":"eyebrow","label":"Eyebrow","default":"The Slouchers Edit"},{"type":"text","id":"heading","label":"Heading","default":"A room to call your own"},{"type":"textarea","id":"body","label":"Body","default":"Furniture that invites you to slow down, settle in, and make more of the everyday."},{"type":"text","id":"link_label","label":"Link label","default":"Read More"},{"type":"url","id":"link","label":"Link"},{"type":"image_picker","id":"image","label":"Main photograph"},{"type":"collection","id":"collection","label":"Related products"}],"presets":[{"name":"Editorial feature collage"}]}
+{% endschema %}

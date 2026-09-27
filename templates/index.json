@@ -3,10 +3,9 @@
     "hero": {
       "type": "sl-hero",
       "settings": {
-        "heading": "Feel right\nat home.",
+        "heading": "Home should\nfeel like Slouchers.",
         "button_label": "Shop Now",
-        "button_link": "/collections/slouchers",
-        "featured_product": "luxury-u-shape-sofa-velvet-fabric"
+        "button_link": "/collections/slouchers"
       }
     },
     "trending": {
@@ -283,7 +282,7 @@
       "type": "sd-intro",
       "settings": {
         "heading": "A better day begins at home.",
-        "body": "Settle into a sofa that makes every day feel a little easier. Thoughtful shapes, inviting fabrics, and room for everyone to get comfortable.",
+        "body": "Sofas made for how you really live. Warm, relaxed, and ready for all the moments worth staying in for.",
         "link_text": "About Us"
       }
     },
@@ -327,17 +326,107 @@
         "comfort",
         "help"
       ]
+    },
+    "feature": {
+      "type": "sd-feature",
+      "settings": {
+        "eyebrow": "The Slouchers Edit",
+        "heading": "A room to call your own",
+        "body": "Make room for softer mornings, unhurried afternoons, and evenings that last a little longer.",
+        "link_label": "Read More",
+        "collection": "slouchers"
+      }
+    },
+    "marquee": {
+      "type": "sd-marquee",
+      "settings": {
+        "heading": "Explore Our Collection"
+      },
+      "blocks": {
+        "corner": {
+          "type": "item",
+          "settings": {
+            "title": "Corner Sofas",
+            "link": "/collections/slouchers"
+          }
+        },
+        "modular": {
+          "type": "item",
+          "settings": {
+            "title": "Modular Sofas",
+            "link": "/collections/slouchers"
+          }
+        },
+        "chaise": {
+          "type": "item",
+          "settings": {
+            "title": "Chaise Sofas",
+            "link": "/collections/slouchers"
+          }
+        },
+        "armchairs": {
+          "type": "item",
+          "settings": {
+            "title": "Armchairs",
+            "link": "/collections/slouchers"
+          }
+        }
+      },
+      "block_order": [
+        "corner",
+        "modular",
+        "chaise",
+        "armchairs"
+      ]
+    },
+    "testimonials": {
+      "type": "sd-testimonials",
+      "settings": {
+        "heading": "In Your Words",
+        "body": "Good furniture makes space for better moments."
+      },
+      "blocks": {
+        "story": {
+          "type": "story",
+          "settings": {
+            "quote": "Make yourself comfortable. Stay as long as you like.",
+            "author": "SLOUCHERS & CO.",
+            "link_label": "Shop sofas",
+            "link": "/collections/slouchers"
+          }
+        }
+      },
+      "block_order": [
+        "story"
+      ]
+    },
+    "follow": {
+      "type": "sd-follow",
+      "settings": {
+        "heading": "Follow Us",
+        "link_label": "@slouchersandco",
+        "collection": "slouchers"
+      }
+    },
+    "family": {
+      "type": "sd-family",
+      "settings": {
+        "heading": "A home for every kind of day",
+        "body": "A good sofa changes the way a room feels. Find one that makes space for every moment.",
+        "link_label": "Explore the collection",
+        "link": "/collections/slouchers"
+      }
     }
   },
   "order": [
     "hero",
     "intro",
     "shop_way",
-    "trending",
-    "modular",
-    "arrivals",
+    "feature",
     "benefits",
-    "moments",
-    "story"
+    "marquee",
+    "testimonials",
+    "follow",
+    "family"
   ]
 }

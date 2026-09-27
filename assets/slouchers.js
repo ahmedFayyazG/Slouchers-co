@@ -76,6 +76,22 @@ document.addEventListener('click', function (event) {
     document.querySelectorAll('[data-shop-tab]').forEach(item => item.setAttribute('aria-selected', String(item === tab)));
     document.querySelectorAll('[data-shop-panel]').forEach(panel => { panel.hidden = panel.dataset.shopPanel !== target; });
   }));
+  document.querySelectorAll('[data-hero-play]').forEach(button => {
+    const video = button.closest('.sd-hero')?.querySelector('video');
+    if (!video) { button.hidden = true; return; }
+    button.addEventListener('click', () => {
+      if (video.paused) {
+        video.play().then(() => {
+          button.setAttribute('aria-label', 'Pause video');
+          button.querySelector('span').textContent = 'Ⅱ';
+        }).catch(() => {});
+      } else {
+        video.pause();
+        button.setAttribute('aria-label', 'Play video');
+        button.querySelector('span').textContent = '▶';
+      }
+    });
+  });
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     document.body.classList.add('sd-motion');
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {

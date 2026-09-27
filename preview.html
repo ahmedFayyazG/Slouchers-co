@@ -1,0 +1,344 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Slouchers & Co — Local Preview</title><style>/** Critical CSS for the theme. This file is included on every page. */
+
+/* Reset styles inspired by https://www.joshwcomeau.com/css/custom-css-reset/ */
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  min-height: 100svh;
+}
+
+html:has(dialog[scroll-lock][open], details[scroll-lock][open]) {
+  overflow: hidden;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+textarea,
+select {
+  font: inherit;
+  border-radius: var(--style-border-radius-inputs);
+}
+
+select {
+  background-color: var(--color-background);
+  color: currentcolor;
+}
+
+dialog {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+p {
+  text-wrap: pretty;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+p:empty {
+  display: none;
+}
+
+:is(p, h1, h2, h3, h4, h5, h6):first-child,
+:empty:first-child + :where(p, h1, h2, h3, h4, h5, h6) {
+  margin-block-start: 0;
+}
+
+:is(p, h1, h2, h3, h4, h5, h6):last-child,
+:where(p, h1, h2, h3, h4, h5, h6) + :has(+ :empty:last-child) {
+  margin-block-end: 0;
+}
+
+/** Theme styles below */
+body {
+  font-family: var(--font-primary--family);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+/** Section layout utilities */
+
+/**
+ * Setup a grid that enables both full-width and constrained layouts
+ * depending on the class of the child elements.
+ *
+ * By default, a minimum content margin is set on the left and right
+ * sides of the section and the content is centered in the viewport to
+ * not exceed the maximum page width.
+ *
+ * When a child element is given the `full-width` class, it will span
+ * the entire viewport.
+ */
+.shopify-section {
+  --content-width: min(
+    calc(var(--page-width) - var(--page-margin) * 2),
+    calc(100% - var(--page-margin) * 2)
+  );
+  --content-margin: minmax(var(--page-margin), 1fr);
+  --content-grid: var(--content-margin) var(--content-width) var(--content-margin);
+
+  /* This is required to make <img> elements work as background images */
+  position: relative;
+  grid-template-columns: var(--content-grid);
+  display: grid;
+  width: 100%;
+}
+
+/* Child elements, by default, are constrained to the central column of the grid. */
+.shopify-section > * {
+  grid-column: 2;
+}
+
+/* Child elements that use the full-width utility class span the entire viewport. */
+.shopify-section > .full-width {
+  grid-column: 1 / -1;
+}
+
+:root{--sl-ink:#202020;--sl-yellow:#ffe18a;--sl-soft:#f7f7f7;--sl-gap:24px}html{scroll-behavior:smooth}body{color:var(--sl-ink);background:#fff;font-family:Arial,Helvetica,sans-serif}a{color:inherit}button,summary{cursor:pointer}button,input,select{font:inherit}button:focus-visible,a:focus-visible,summary:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #9c3b17;outline-offset:3px}.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.sl-announcement{height:39px;background:var(--sl-yellow);display:flex;align-items:center;justify-content:center;text-align:center;font-size:13px;font-weight:800}.sl-header{height:72px;padding:0 var(--sl-gap);display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;background:#fff;z-index:20}.sl-header a{text-decoration:none}.sl-wordmark,.sl-footer-wordmark{font-family:Arial,Helvetica,sans-serif;font-size:40px;font-weight:1000;letter-spacing:-.075em;line-height:.9;white-space:nowrap}.sl-wordmark span,.sl-footer-wordmark span{font-size:.4em;letter-spacing:-.04em;vertical-align:top;display:inline-block;padding:3px 0 0 4px}.sl-desktop-nav{display:flex;gap:42px;align-items:center;justify-content:center;font-size:17px;font-weight:700;white-space:nowrap}.sl-desktop-nav a:hover,.sl-header-actions a:hover{text-decoration:underline}.sl-nav-dropdown{position:relative}.sl-nav-dropdown summary{list-style:none}.sl-nav-dropdown summary::-webkit-details-marker{display:none}.sl-nav-dropdown__panel{position:absolute;top:35px;left:-22px;min-width:200px;background:#fff;box-shadow:0 8px 25px #0002;padding:15px 22px;display:grid;gap:15px}.sl-header-actions{display:flex;justify-content:flex-end;gap:25px;font-size:13px}.sl-mobile-menu{display:none}.sl-section{padding:96px var(--sl-gap) 0;width:100%;max-width:none}.sl-section h2{font-size:clamp(40px,4.9vw,68px);line-height:1;letter-spacing:-.065em;font-weight:900}.sl-hero{height:min(67vw,800px);min-height:570px;background:#6c6259;position:relative;overflow:hidden;color:white}.sl-hero__media,.sl-hero__media img,.sl-hero__placeholder,.sl-hero__placeholder svg{position:absolute;width:100%;height:100%;inset:0;object-fit:cover}.sl-hero__placeholder{background:#78695c}.sl-hero__placeholder svg{opacity:.35}.sl-hero__shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.42),transparent 63%)}.sl-hero__content{position:absolute;left:var(--sl-gap);bottom:25%;max-width:1000px}.sl-hero h1{font-size:clamp(72px,8vw,138px);letter-spacing:-.075em;line-height:.92;font-weight:900}.sl-hero p{font-size:clamp(17px,1.6vw,23px);line-height:1.2;font-weight:650;max-width:540px;margin:8px 0 56px}.sl-button{display:inline-flex;align-items:center;padding:17px 27px;background:var(--sl-yellow);color:var(--sl-ink);font-size:17px;font-weight:800;text-decoration:none}.sl-button:hover,.sl-rail-next:hover{background:#ffd35c}.sl-hero__corner{position:absolute;right:var(--sl-gap);bottom:24px;font-size:12px;font-weight:700}.sl-section-heading{margin-bottom:22px}.sl-scroll-wrap{position:relative}.sl-product-rail__track,.sl-category-rail__track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;gap:4px}.sl-product-rail__track::-webkit-scrollbar,.sl-category-rail__track::-webkit-scrollbar{display:none}.sl-product-card{text-decoration:none;flex:0 0 calc((100% - 12px)/4);min-width:0;scroll-snap-align:start}.sl-product-card__media{background:#f8f8f8;aspect-ratio:1/1;display:grid;place-items:center;overflow:hidden}.sl-product-card__media img,.sl-product-card__media svg{width:100%;height:100%;object-fit:contain}.sl-product-card__info{display:flex;gap:10px;justify-content:space-between;padding-top:14px;font-size:16px;font-weight:750}.sl-product-card__info h3{font-size:16px;line-height:1.1;letter-spacing:-.03em}.sl-product-card__info span{white-space:nowrap}.sl-product-card__detail{color:#8a8a8a;font-size:13px;margin-top:5px}.sl-rail-next{position:absolute;right:0;top:43%;width:36px;height:36px;background:var(--sl-yellow);border:0;font-size:21px;display:grid;place-items:center}.sl-under-link{display:inline-block;margin-top:17px;color:#888;text-decoration:none;font-size:clamp(25px,2.6vw,38px);font-weight:800;letter-spacing:-.05em}.sl-under-link:hover{color:var(--sl-ink)}.sl-category-rail{padding-top:150px}.sl-category-rail__track{gap:5px}.sl-category-card{text-decoration:none;flex:0 0 calc((100% - 10px)/2.15);scroll-snap-align:start;min-width:0}.sl-category-card__media{aspect-ratio:1.14;background:#f5f5f5;overflow:hidden}.sl-category-card__media img,.sl-category-card__media svg{width:100%;height:100%;object-fit:cover}.sl-category-card__info{display:flex;align-items:baseline;gap:7px;padding-top:8px}.sl-category-card__info h3{font-size:clamp(26px,2.9vw,42px);letter-spacing:-.07em;line-height:1;font-weight:900}.sl-category-card__info span{color:#888;font-size:13px}.sl-editorial{padding-top:175px}.sl-editorial__copy h2{max-width:1100px}.sl-editorial__copy p{font-size:19px;max-width:650px;margin-top:18px}.sl-editorial__media{width:100%;height:600px;margin-top:28px;background:#f7f7f7;overflow:hidden}.sl-editorial__media img,.sl-editorial__media svg{width:100%;height:100%;object-fit:cover}.sl-editorial .sl-under-link{margin:20px 0 12px}.sl-editorial--split{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}.sl-editorial--split .sl-editorial__media{height:550px;margin:0}.sl-faq{padding-top:140px;padding-bottom:140px}.sl-faq__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:25px}.sl-faq details{background:#f5f5f5}.sl-faq summary{font-size:16px;font-weight:750;padding:19px 17px;display:flex;justify-content:space-between;list-style:none}.sl-faq summary::-webkit-details-marker{display:none}.sl-faq__answer{padding:2px 17px 20px;line-height:1.45}.sl-footer{padding:40px var(--sl-gap) 20px;background:#fff}.sl-footer-wordmark{display:block;text-decoration:none;font-size:clamp(76px,14vw,245px);letter-spacing:-.075em;overflow:hidden;line-height:1}.sl-footer-wordmark span{font-size:.29em;padding-top:.2em}.sl-footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr 2fr;gap:25px;padding:30px 0 85px}.sl-footer-grid>div{display:flex;flex-direction:column;gap:5px}.sl-footer-grid h2{font-size:14px;color:#888;font-weight:400;margin-bottom:20px}.sl-footer-grid a{text-decoration:none;font-size:17px;font-weight:650}.sl-footer-newsletter p{font-size:16px;font-weight:650}.sl-footer-newsletter form{display:flex;background:#f6f6f6;margin-top:24px;min-height:50px}.sl-footer-newsletter input{min-width:0;width:100%;background:transparent;border:0;padding:12px}.sl-footer-newsletter button{white-space:nowrap;border:0;background:transparent;padding:12px;font-size:12px;font-weight:800}.sl-footer-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #ddd;padding-top:18px;color:#888}.sl-footer-bottom>div{display:flex;gap:5px;flex-wrap:wrap}.sl-footer-bottom svg{width:35px;height:23px}.sl-breadcrumb{display:flex;flex-wrap:wrap;gap:10px;font-size:12px;font-weight:600}.sl-breadcrumb a{text-decoration:none}.sl-collection{padding-top:120px;padding-bottom:100px}.sl-collection h1{font-size:clamp(80px,10vw,150px);line-height:1;letter-spacing:-.08em;margin-top:6px}.sl-collection__description{max-width:650px;font-size:20px;font-weight:700;line-height:1.3;margin-top:22px}.sl-collection__toolbar{display:flex;justify-content:space-between;align-items:center;margin:95px 0 20px;color:#777}.sl-collection__toolbar label{margin-right:9px}.sl-collection__toolbar select{padding:10px;background:#fff;border:1px solid #ddd}.sl-collection__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 8px}.sl-collection__grid .sl-product-card{width:100%}.sl-pagination{margin-top:40px;text-align:center}.sl-pdp{display:grid;grid-template-columns:58% 42%;gap:4%;padding-top:0;padding-bottom:100px}.sl-pdp__main-media{aspect-ratio:1/1;background:#fafafa;display:grid;place-items:center}.sl-pdp__main-media img,.sl-pdp__main-media svg{max-width:100%;width:100%;height:100%;object-fit:contain}.sl-pdp__thumbs{display:flex;overflow-x:auto;gap:8px;margin-top:8px}.sl-pdp__thumb{width:110px;min-width:110px;height:110px;background:#f7f7f7;border:1px solid #eee;padding:0}.sl-pdp__thumb:first-child{border:2px solid #222}.sl-pdp__thumb img{width:100%;height:100%;object-fit:contain}.sl-pdp__details{padding-right:8%;padding-top:5px}.sl-pdp h1{font-size:clamp(40px,3.5vw,58px);font-weight:900;letter-spacing:-.06em;line-height:1;margin:28px 0 16px}.sl-pdp__price{font-size:28px;font-weight:850}.sl-pdp__price s{font-size:16px;color:#888;margin-left:10px}.sl-pdp__intro{font-size:18px;font-weight:650;line-height:1.25;margin:45px 0 15px}.sl-pdp__benefits{padding-left:20px;font-size:17px;font-weight:650;line-height:1.8}.sl-pdp__form{display:grid;gap:10px;margin:30px 0}.sl-pdp__form select,.sl-pdp__form input[type=number]{border:1px solid #ddd;padding:15px;background:white}.sl-pdp__form input[type=number]{width:90px}.sl-add-to-cart{background:var(--sl-yellow);border:0;padding:20px;font-size:18px;font-weight:800}.sl-add-to-cart:disabled{opacity:.5}.sl-pdp__accordions{display:flex;gap:25px}.sl-pdp__accordions details{flex:1;border-top:1px solid #ddd;padding-top:15px}.sl-pdp__accordions summary{font-weight:750;display:flex;justify-content:space-between}.sl-pdp__accordions details>div{padding-top:15px;line-height:1.5}#shopify-section-template--main{width:100%}
+@media(max-width:900px){.sl-header{grid-template-columns:1fr auto auto}.sl-wordmark{font-size:30px}.sl-desktop-nav{display:none}.sl-header-actions{gap:14px}.sl-mobile-menu{display:block;margin-left:18px}.sl-mobile-menu summary{list-style:none;font-size:26px}.sl-mobile-menu nav{position:absolute;left:0;right:0;top:111px;background:white;z-index:25;padding:25px;display:grid;gap:25px;box-shadow:0 15px 25px #0002}.sl-mobile-menu nav a{text-decoration:none;font-weight:700;font-size:20px}.sl-product-card{flex-basis:calc((100% - 8px)/2.4)}.sl-category-card{flex-basis:70%}.sl-faq__grid{grid-template-columns:repeat(2,1fr)}.sl-footer-grid{grid-template-columns:repeat(2,1fr)}.sl-pdp{grid-template-columns:1fr}.sl-pdp__details{padding:20px 0}.sl-collection__grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){:root{--sl-gap:15px}.sl-announcement{font-size:10px;height:32px}.sl-header{height:60px}.sl-wordmark{font-size:25px}.sl-wordmark span{font-size:.32em}.sl-header-actions{font-size:12px}.sl-header-actions a:first-child{display:none}.sl-mobile-menu nav{top:92px}.sl-hero{min-height:620px;height:75svh}.sl-hero__content{bottom:18%}.sl-hero h1{font-size:clamp(55px,14vw,85px)}.sl-hero p{font-size:16px;margin:12px 0 26px}.sl-section{padding-top:70px}.sl-section h2{font-size:clamp(38px,11vw,55px)}.sl-product-card{flex-basis:76%}.sl-product-card__info h3,.sl-product-card__info span{font-size:15px}.sl-category-rail{padding-top:90px}.sl-category-card{flex-basis:88%}.sl-category-card__info h3{font-size:29px}.sl-editorial{padding-top:100px}.sl-editorial__media{height:350px}.sl-editorial--split{display:block}.sl-editorial--split .sl-editorial__media{height:350px;margin-top:22px}.sl-faq{padding-bottom:70px}.sl-faq__grid{grid-template-columns:1fr}.sl-footer-wordmark{font-size:13vw}.sl-footer-grid{grid-template-columns:1fr 1fr;padding-bottom:50px}.sl-footer-newsletter{grid-column:span 2}.sl-footer-bottom{display:block}.sl-footer-bottom>div{margin-top:20px}.sl-collection{padding-top:70px}.sl-collection h1{font-size:65px}.sl-collection__description{font-size:16px}.sl-collection__toolbar{margin:60px 0 18px}.sl-collection__grid{gap:24px 5px}.sl-collection__grid .sl-product-card__media{aspect-ratio:1}.sl-collection__grid .sl-product-card__info{display:block}.sl-pdp{padding-top:0}.sl-pdp__thumb{height:80px;min-width:80px;width:80px}.sl-pdp__details{padding-top:30px}.sl-pdp__accordions{display:block}.sl-pdp__accordions details{padding:16px 0}.sl-pdp h1{font-size:43px}}
+.sl-cart,.sl-search{padding-top:90px;padding-bottom:100px}.sl-cart h1,.sl-search h1{font-size:clamp(68px,8vw,125px);line-height:1;letter-spacing:-.07em;margin-bottom:35px}.sl-cart__item{display:grid;grid-template-columns:160px 1fr auto;gap:24px;border-top:1px solid #ddd;padding:20px 0}.sl-cart__item img{width:160px;height:160px;object-fit:contain;background:#f7f7f7}.sl-cart__item a{text-decoration:none}.sl-cart__item h2{font-size:25px;letter-spacing:-.04em}.sl-cart__item>div:last-child{display:grid;justify-items:end;gap:10px}.sl-cart__item input{width:75px;padding:8px}.sl-cart__summary{margin-left:auto;max-width:360px;display:grid;gap:20px}.sl-cart__summary p{display:flex;justify-content:space-between;font-size:23px}.sl-cart__summary>button:first-child{border:0;background:none;text-align:right;text-decoration:underline}.sl-search form{max-width:900px}.sl-search form>div{display:flex;border-bottom:2px solid #222;margin:20px 0 60px}.sl-search input{width:100%;border:0;padding:18px 0;font-size:30px;outline:none}.sl-search button{border:0;background:none;font-weight:800;font-size:20px}.sl-search .sl-collection__grid{margin-top:30px}@media(max-width:600px){.sl-cart__item{grid-template-columns:100px 1fr;gap:12px}.sl-cart__item img{width:100px;height:100px}.sl-cart__item>div:last-child{grid-column:2;display:flex;justify-content:space-between}.sl-cart__item h2{font-size:18px}}
+.sl-image-rail>p{font-size:18px;margin:12px 0 28px}.sl-image-rail__track{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.sl-image-rail__frame{flex:0 0 30%;height:440px;background:#f7f7f7;scroll-snap-align:start}.sl-image-rail__frame img,.sl-image-rail__frame svg{width:100%;height:100%;object-fit:cover}.sl-image-split__grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:22px}.sl-image-split__grid>a{text-decoration:none}.sl-image-split__media{height:500px;background:#f7f7f7}.sl-image-split__media img,.sl-image-split__media svg{width:100%;height:100%;object-fit:cover}.sl-image-split h3{font-size:32px;letter-spacing:-.06em;margin-top:12px}.sl-image-split p{max-width:420px;margin-top:8px;font-size:17px}.sl-statement{padding-top:180px;padding-bottom:120px;min-height:580px}.sl-statement h2{max-width:1000px}.sl-image-rail+.sl-category-rail{padding-top:130px}@media(max-width:600px){.sl-image-rail__frame{flex-basis:75%;height:320px}.sl-image-split__grid{grid-template-columns:1fr;gap:35px}.sl-image-split__media{height:360px}.sl-statement{min-height:420px;padding-top:90px;padding-bottom:60px}}
+
+:root{--sd-yellow:#ffda5f;--sd-peach:#fee1d5;--sd-ink:#111;--sd-page:24px;--sl-yellow:var(--sd-yellow);--sl-ink:var(--sd-ink)}
+html{scroll-behavior:smooth}body{font-family:"Calibre","Helvetica Neue",Helvetica,Arial,sans-serif;color:var(--sd-ink);font-weight:400}button,input{font:inherit}
+.sd-site-top{position:absolute;z-index:50;top:0;left:0;width:100%;pointer-events:none}.sd-site-top>*{pointer-events:auto}.sd-announcement{height:30px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--sd-page);background:var(--sd-yellow);font-size:14px;line-height:1.1}.sd-announcement a{color:inherit;text-decoration:underline;font-weight:600}.sd-header{height:96px;padding:0 var(--sd-page);color:white;position:relative;transition:color .32s,background-color .32s}.sd-header::after{content:"";position:absolute;bottom:0;left:var(--sd-page);right:var(--sd-page);border-bottom:1px solid currentColor;opacity:.8}.sd-header__bar{height:100%;display:grid;grid-template-columns:minmax(165px,1fr) auto minmax(165px,1fr);align-items:center;gap:22px}.sd-wordmark{text-decoration:none;font-size:33px;font-weight:700;letter-spacing:-.085em;line-height:1;white-space:nowrap}.sd-wordmark span{font-size:.48em;letter-spacing:-.04em;margin-left:.2em}.sd-nav{display:flex;align-items:center;gap:40px;white-space:nowrap}.sd-nav a,.sd-nav button{color:inherit;text-decoration:none;background:none;border:0;padding:0;font-size:clamp(26px,2.8vw,40px);font-weight:600;letter-spacing:-.045em;line-height:1}.sd-nav :is(a,button):hover,.sd-nav button[aria-expanded=true]{opacity:.57}.sd-header__actions{display:flex;justify-content:flex-end}.sd-header__actions :is(a,button){height:43px;width:43px;color:inherit;border:1px solid currentColor;margin-left:-1px;display:grid;place-items:center;background:none;position:relative}.sd-header__actions svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.sd-header__actions small{position:absolute;right:1px;top:0;font-size:10px}.sd-mobile-toggle{display:none!important}
+.sd-site-top.is-scrolled{position:fixed;top:-30px}.sd-site-top.is-scrolled .sd-header,.sd-site-top.is-open .sd-header{background:var(--sd-peach);color:var(--sd-ink)}.sd-site-top.is-scrolled:not(.is-open) .sd-header{box-shadow:0 1px 0 #1112}.sd-site-top.is-open .sd-header::after{opacity:1}.sd-mega{position:absolute;top:96px;left:0;right:0;min-height:min(590px,calc(100vh - 96px));padding:30px var(--sd-page) 70px;display:grid;grid-template-columns:1fr 1.5fr 1.8fr;gap:30px;background:var(--sd-peach);color:var(--sd-ink);box-shadow:0 16px 18px #0002}.sd-mega[hidden],.sd-mobile-nav[hidden],.sd-shop-way__grid[hidden]{display:none!important}.sd-mega__lead,.sd-mega__categories,.sd-mega__links{display:flex;flex-direction:column;align-items:flex-start;gap:14px}.sd-mega__lead a,.sd-mega__categories a{text-decoration:none;font-size:clamp(25px,2.8vw,40px);line-height:1.06;letter-spacing:-.045em;font-weight:600}.sd-mega__categories a:not(:first-child){opacity:.5}.sd-mega__categories a:hover{opacity:1}.sd-mega__links a{text-decoration:none;font-size:19px;line-height:1.18}.sd-mega a:hover{text-decoration:underline}.sd-mega__feature{grid-column:1/-1;align-self:end;font-size:13px;text-decoration:none}.sd-mega__feature span{font-size:19px;margin-left:10px}
+body:has(.sd-hero) .sd-site-top+.shopify-section,body:has(.sd-hero) #shopify-section-header{z-index:50}.sd-hero{margin:30px var(--sd-page) 0;min-height:620px;height:min(56.3vw,800px);position:relative;background:#b4a493;overflow:hidden;color:white}.sd-hero__media,.sd-hero__media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.sd-hero__media img{animation:sd-hero-in 1.2s ease-out both}.sd-hero__shade{position:absolute;inset:0;background:linear-gradient(90deg,#0006,transparent 78%),linear-gradient(0deg,#0006,transparent 50%)}.sd-hero__content{position:absolute;bottom:80px;left:0;padding:0 24px}.sd-hero h1{font-size:clamp(55px,5.4vw,86px);line-height:.98;font-weight:600;letter-spacing:-.055em;max-width:780px;margin:0 0 25px}.sd-outline-button{border:1px solid currentColor;min-height:43px;display:inline-flex;align-items:center;justify-content:center;padding:8px 16px;text-decoration:none;font-size:16px;font-weight:600;transition:background .2s,color .2s}.sd-outline-button:hover{background:var(--sd-ink);border-color:var(--sd-ink);color:white}.sd-outline-button--light:hover{background:white;border-color:white;color:#111}.sd-hero__index{position:absolute;right:24px;bottom:24px;font-size:13px}
+.sd-intro{background:var(--sd-yellow);padding:105px var(--sd-page) 125px;min-height:418px;display:grid;grid-template-columns:1fr 1.1fr;gap:60px}.sd-intro h2{font-size:clamp(38px,4vw,56px);letter-spacing:-.055em;line-height:1.05;font-weight:600;max-width:520px}.sd-intro p{font-size:clamp(20px,2vw,27px);line-height:1.12;font-weight:500;max-width:690px;margin:0 0 28px}
+.sd-shop-way{padding:64px var(--sd-page) 110px}.sd-shop-way h2{font-size:clamp(38px,3.4vw,50px);letter-spacing:-.05em;font-weight:600;margin:0 0 58px}.sd-shop-way__tabs{display:flex;gap:18px;border-bottom:1px solid #111;margin-bottom:7px}.sd-shop-way__tabs button{background:none;border:0;padding:0 0 13px;font-size:16px;color:#999}.sd-shop-way__tabs button[aria-selected=true]{color:#111;border-bottom:1px solid #111;margin-bottom:-1px}.sd-shop-way__grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:40px 8px}.sd-shop-way__item{text-decoration:none;font-size:13px;font-weight:600;line-height:1.16;min-width:0}.sd-shop-way__image{height:auto;aspect-ratio:1.6;background:#f7f7f7;margin-bottom:8px;overflow:hidden}.sd-shop-way__image img{height:100%;width:100%;object-fit:contain;transition:transform .45s}.sd-shop-way__item:hover img{transform:scale(1.07)}.sd-shop-way__all{display:inline-block;margin-top:42px;font-size:17px}.sd-benefits{padding:110px var(--sd-page);background:var(--sd-peach);display:grid;grid-template-columns:1fr 1.5fr;gap:70px}.sd-benefits__lead{font-size:clamp(34px,3.8vw,56px);letter-spacing:-.05em;line-height:1.05;max-width:550px}.sd-benefits__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}.sd-benefits__icon{font-size:48px;display:block;margin:0 0 60px}.sd-benefits h3{font-size:27px;line-height:1.1;letter-spacing:-.04em;font-weight:600;margin:0 0 10px}.sd-benefits p{font-size:17px;line-height:1.25;margin:0}.sl-section h2,.sl-collection h1,.sl-pdp h1{font-weight:600;letter-spacing:-.055em}.sl-product-card__media{background:#f7f7f7}.sl-product-card__info{font-weight:600}.sl-footer{background:var(--sd-yellow)}.sl-footer-wordmark{font-weight:700}.sd-reveal{transition:opacity .65s,transform .65s}.sd-motion .sd-reveal:not(.is-visible){opacity:0;transform:translateY(35px)}@keyframes sd-hero-in{from{transform:scale(1.06);opacity:.6}to{transform:scale(1);opacity:1}}
+body:not(:has(.sd-hero)){padding-top:96px}body:not(:has(.sd-hero)) .sd-site-top{position:fixed;top:-30px}body:not(:has(.sd-hero)) .sd-header{background:var(--sd-peach);color:#111}body:not(:has(.sd-hero)) .sl-collection,body:not(:has(.sd-hero)) .sl-pdp,body:not(:has(.sd-hero)) .sl-cart,body:not(:has(.sd-hero)) .sl-search{padding-top:35px}
+@media(max-width:1080px){.sd-nav{gap:19px}.sd-header__bar{grid-template-columns:auto 1fr auto}.sd-nav a,.sd-nav button{font-size:25px}.sd-wordmark{font-size:25px}.sd-header__actions :is(a,button){width:38px;height:38px}.sd-mega__lead a,.sd-mega__categories a{font-size:28px}.sd-shop-way__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:760px){:root{--sd-page:15px}.sd-announcement{font-size:12px}.sd-header{height:65px;padding:0 15px}.sd-header__bar{gap:8px}.sd-header::after{left:15px;right:15px}.sd-nav,.sd-account{display:none!important}.sd-mobile-toggle{display:grid!important}.sd-header__actions :is(a,button){width:36px;height:36px}.sd-header__actions svg{width:19px}.sd-wordmark{font-size:27px}.sd-mega{display:none!important}.sd-mobile-nav{position:absolute;top:65px;left:0;right:0;height:calc(100dvh - 65px);overflow:auto;background:var(--sd-peach);color:#111;padding:24px 15px 80px;display:flex;flex-direction:column;gap:14px}.sd-mobile-nav>a,.sd-mobile-nav summary{font-size:36px;line-height:1.1;letter-spacing:-.05em;text-decoration:none;list-style:none}.sd-mobile-nav summary::-webkit-details-marker{display:none}.sd-mobile-nav details>a{display:block;padding:12px 15px;font-size:19px;text-decoration:none}.sd-hero{margin:30px 0 0;min-height:610px;height:76svh}.sd-hero__content{bottom:66px;padding:0 15px}.sd-hero h1{font-size:clamp(53px,12vw,75px)}.sd-intro{grid-template-columns:1fr;padding:75px 15px 85px;gap:35px}.sd-intro h2{font-size:40px}.sd-intro p{font-size:21px}.sd-shop-way{padding:65px 15px 75px}.sd-shop-way h2{margin-bottom:38px}.sd-shop-way__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 7px}.sd-shop-way__image{aspect-ratio:1.3}.sd-benefits{grid-template-columns:1fr;padding:75px 15px;gap:50px}.sd-benefits__grid{grid-template-columns:1fr;gap:38px}.sd-benefits__icon{margin-bottom:10px}}
+@media(prefers-reduced-motion:reduce){.sd-reveal,.sd-hero__media img,.sd-shop-way__image img{animation:none;transition:none}.sd-reveal:not(.is-visible){opacity:1;transform:none}}
+.sl-collection{padding:38px var(--sd-page) 110px}.sl-collection .sl-breadcrumb{display:none}.sl-collection h1{font-size:clamp(40px,4vw,55px);letter-spacing:-.055em;margin:0}.sl-collection__description{font-size:18px;font-weight:400}.sl-collection__toolbar{margin:195px 0 9px;border-bottom:1px solid #111;padding-bottom:15px;color:#111;font-size:15px}.sl-collection__toolbar select{border:0}.sl-collection__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:46px 8px}.sl-collection__grid .sl-product-card__media{aspect-ratio:1.26}.sl-product-card__media img{transition:transform .45s}.sl-product-card:hover img{transform:scale(1.035)}.sl-product-card__info h3{font-weight:600;letter-spacing:-.02em}.sl-product-card__info{font-weight:600}
+.sl-pdp{grid-template-columns:minmax(0,2fr) minmax(320px,1fr);gap:24px;padding:45px var(--sd-page) 120px}.sl-pdp__main-media{aspect-ratio:1.48;background:#f7f7f7}.sl-pdp__details{padding:8px 0 0}.sl-pdp__details .sl-breadcrumb{display:none}.sl-pdp h1{font-size:clamp(27px,2vw,36px);margin:0 0 12px}.sl-pdp__price{font-size:22px;font-weight:600}.sl-pdp__intro{font-size:17px;font-weight:400;line-height:1.3;margin:25px 0}.sl-pdp__benefits{font-size:15px;font-weight:400;line-height:1.6;padding-left:18px}.sl-pdp__form{margin:20px 0}.sl-add-to-cart{background:var(--sd-yellow);font-size:17px;font-weight:600;padding:16px}.sl-pdp__accordions{display:block}.sl-pdp__accordions details{border-top:1px solid #aaa;padding:17px 0}.sl-pdp__accordions details:last-child{border-bottom:1px solid #aaa}
+@media(max-width:760px){body:not(:has(.sd-hero)){padding-top:65px}.sl-collection__toolbar{margin-top:90px}.sl-collection__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sl-collection__grid .sl-product-card__media{aspect-ratio:1}.sl-pdp{grid-template-columns:1fr;gap:12px;padding-top:18px}.sl-pdp__main-media{aspect-ratio:1.2}.sl-pdp__details{padding-top:16px}}
+
+body{font-family:Calibre,Helvetica,Arial,sans-serif;background:#fff;color:#111}
+.shopify-section:has(> .sd-hero),.shopify-section:has(> .sd-intro),.shopify-section:has(> .sd-shop-way),.shopify-section:has(> .sd-feature),.shopify-section:has(> .sd-benefits),.shopify-section:has(> .sd-marquee),.shopify-section:has(> .sd-testimonials),.shopify-section:has(> .sd-follow),.shopify-section:has(> .sd-family){display:block}
+.shopify-section:has(> .sd-site-top){position:static;display:block;height:0;z-index:70}
+:root{--sd-yellow:#ffda5c;--sd-peach:#fee1d5;--sd-page:24px}
+.sd-site-top{z-index:70}
+.sd-announcement{height:30px;background:var(--sd-yellow);font-size:16px;font-weight:500;line-height:1}
+.sd-announcement a{font-size:15px;font-weight:500}
+.sd-header{height:96px;padding:0 24px;background:transparent;color:#fff}
+.sd-header__bar{grid-template-columns:1fr auto 1fr;gap:35px}
+.sd-header::after{left:24px;right:24px}
+.sd-wordmark{font-size:35px;letter-spacing:-.075em;font-weight:600}
+.sd-wordmark span{font-size:.42em;letter-spacing:-.02em;margin-left:.13em}
+.sd-nav{gap:39px}
+.sd-nav a,.sd-nav button{font-family:Calibre,Helvetica,Arial,sans-serif;font-size:clamp(31px,2.85vw,41px);font-weight:600;letter-spacing:-.04em;line-height:.95}
+.sd-header__actions :is(a,button){height:43px;width:43px}
+.sd-site-top.is-scrolled .sd-header{background:white;color:#111;box-shadow:none}
+.sd-site-top.is-open .sd-header{background:var(--sd-peach);color:#111;box-shadow:none}
+.sd-site-top.is-scrolled .sd-header::after{border-color:#111}
+.sd-mega{top:96px;min-height:590px;padding:35px 24px 35px;grid-template-columns:24% 35% 1fr;gap:15px;box-shadow:0 6px 18px #0003}
+.sd-mega__lead,.sd-mega__categories,.sd-mega__links{gap:18px}
+.sd-mega__lead a,.sd-mega__categories a{font-size:clamp(32px,2.8vw,42px);font-weight:600;line-height:1.04}
+.sd-mega__links a{font-size:20px}
+.sd-mega__feature{font-size:14px}
+.sd-hero{margin:30px 24px 0;height:calc(100svh - 140px);min-height:650px;max-height:none;background:#bcae9e}
+.sd-hero__media video,.sd-hero__media img{position:absolute;width:100%;height:100%;inset:0;object-fit:cover}
+.sd-hero__shade{background:linear-gradient(0deg,rgba(0,0,0,.28),transparent 45%)}
+.sd-hero__content{left:0;bottom:75px;padding-left:24px;z-index:2}
+.sd-hero h1{font-size:clamp(55px,5.3vw,78px);font-weight:600;letter-spacing:-.04em;line-height:.98;margin-bottom:28px}
+.sd-outline-button{font-size:17px;font-weight:600;min-height:42px;padding:8px 16px}
+.sd-hero__play{position:absolute;bottom:24px;right:24px;color:white;background:none;border:0;font-size:22px;line-height:1;z-index:3}
+.sd-intro{min-height:418px;grid-template-columns:46% 1fr;gap:16px;padding:110px 24px 120px;background:var(--sd-yellow)}
+.sd-intro h2{max-width:550px;font-size:clamp(40px,4vw,57px);letter-spacing:-.04em;line-height:1.04;font-weight:600}
+.sd-intro p{font-size:clamp(21px,1.9vw,28px);line-height:1.15;font-weight:500;margin-bottom:24px}
+.sd-shop-way{padding:61px 24px 72px}
+.sd-shop-way h2{font-size:clamp(38px,3.6vw,49px);font-weight:600;letter-spacing:-.04em;margin:0 0 55px}
+.sd-shop-way__tabs{margin-bottom:8px}
+.sd-shop-way__tabs button{font-size:16px}
+.sd-shop-way__grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:44px 8px}
+.sd-shop-way__image{aspect-ratio:1.6;background:#f7f7f7;overflow:hidden;margin-bottom:8px}
+.sd-shop-way__image img{width:100%;height:100%;object-fit:cover;transition:transform .55s cubic-bezier(.2,.65,.3,1)}
+.sd-shop-way__item:hover img{transform:scale(1.08)}
+.sd-shop-way__item span{font-size:14px;font-weight:600}
+.sd-shop-way__grid--rooms{grid-template-columns:repeat(3,1fr);gap:20px 8px}
+.sd-shop-way__grid--rooms .sd-shop-way__image{aspect-ratio:1.45}
+.sd-feature{display:grid;grid-template-columns:18% 1fr;gap:12px;padding:34px 24px 110px}
+.sd-feature__copy{position:sticky;top:125px;align-self:start}
+.sd-feature__copy>span{font-size:16px;font-weight:600}
+.sd-feature__copy h2{font-size:38px;line-height:1.04;letter-spacing:-.04em;font-weight:600;margin:22px 0}
+.sd-feature__copy p{font-size:17px;font-weight:500;line-height:1.25;max-width:270px;margin-bottom:36px}
+.sd-feature__visual>img{display:block;width:100%;aspect-ratio:1.78;object-fit:cover}
+.sd-feature__gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+.sd-feature__gallery img{width:100%;aspect-ratio:1;object-fit:cover}
+.sd-feature__products{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:55px}
+.sd-feature__products .sl-product-card{min-width:0}
+.sd-feature__products .sl-product-card__media{aspect-ratio:1}
+.sd-benefits{background:white;display:grid;grid-template-columns:18% 1fr;gap:12px;padding:30px 24px 100px}
+.sd-benefits__lead{font-size:17px;line-height:1.25;letter-spacing:0;font-weight:600;max-width:240px}
+.sd-benefits__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.sd-benefits__card{background:#f5f5f3;min-height:460px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:24px}
+.sd-benefits__card img{width:100%;height:240px;object-fit:contain;margin:auto auto 10px}
+.sd-benefits__card h3{font-size:26px;font-weight:600;letter-spacing:-.04em;line-height:1;margin:0 0 16px}
+.sd-benefits__card p{font-size:17px;max-width:250px;line-height:1.15;margin:0}
+.sd-marquee{overflow:hidden;padding:95px 0 50px}
+.sd-marquee h2{font-size:47px;letter-spacing:-.04em;font-weight:600;margin:0 24px 25px;border-bottom:1px solid #111;padding-bottom:20px}
+.sd-marquee__viewport{overflow:hidden}
+.sd-marquee__track{width:max-content;display:flex;gap:75px;animation:sd-marquee 34s linear infinite;align-items:center}
+.sd-marquee__track:hover{animation-play-state:paused}
+.sd-marquee__track a{font-size:clamp(50px,6vw,98px);letter-spacing:-.06em;line-height:1.15;text-decoration:none;white-space:nowrap;font-weight:600}
+.sd-marquee__drawing{display:inline-block;font-size:.85em;font-weight:400;transform:rotate(-8deg);margin-right:20px}
+@keyframes sd-marquee{to{transform:translateX(-33.333%)}}
+.sd-testimonials{padding:85px 24px 110px;display:grid;grid-template-columns:25% 1fr;gap:28px}
+.sd-testimonials__intro h2{font-size:50px;line-height:1;letter-spacing:-.045em;font-weight:600}
+.sd-testimonials__intro p{font-size:18px;line-height:1.2;max-width:280px;margin-top:16px}
+.sd-testimonials__cards{display:flex;gap:9px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.sd-testimonials__card{display:block;flex:0 0 min(58%,620px);position:relative;min-height:530px;color:white;text-decoration:none;scroll-snap-align:start}
+.sd-testimonials__card:first-child:last-child{flex-basis:100%}
+.sd-testimonials__image,.sd-testimonials__image img{width:100%;height:100%;position:absolute;inset:0;object-fit:cover}
+.sd-testimonials__card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#0009,transparent 75%)}
+.sd-testimonials__quote{position:absolute;bottom:25px;left:25px;right:25px;z-index:2;font-size:clamp(20px,2.3vw,31px);line-height:1.12}
+.sd-testimonials__quote small{display:block;font-size:14px;margin:14px 0}
+.sd-testimonials__quote .sd-outline-button{font-size:15px}
+.sd-follow{padding:70px 24px 120px}
+.sd-follow__heading{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:22px}
+.sd-follow h2{font-size:48px;font-weight:600;letter-spacing:-.04em}
+.sd-follow__heading a{font-size:17px}
+.sd-follow__grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
+.sd-follow__grid a{aspect-ratio:1;background:#f5f5f5;overflow:hidden}
+.sd-follow__grid img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.sd-follow__grid a:hover img{transform:scale(1.06)}
+.sd-family{display:grid;grid-template-columns:1fr 1fr;min-height:450px;background:#f7f5f2;margin:0 24px 100px}
+.sd-family__copy{padding:50px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+.sd-family h2{font-size:50px;line-height:1;letter-spacing:-.04em;font-weight:600;max-width:400px}
+.sd-family p{font-size:21px;line-height:1.2;max-width:410px;margin:22px 0}
+.sd-family__media img{width:100%;height:100%;object-fit:cover}
+.sl-footer{background:#fff;padding-top:50px}
+.sl-footer-grid{border-top:1px solid #111;padding-top:45px}
+.sl-footer-wordmark{font-family:Calibre,Arial,sans-serif;font-weight:600}
+@media(max-width:1050px){.sd-nav{gap:22px}.sd-nav a,.sd-nav button{font-size:28px}.sd-feature{grid-template-columns:25% 1fr}.sd-benefits{grid-template-columns:23% 1fr}.sd-benefits__card{min-height:390px}.sd-shop-way__grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:760px){:root{--sd-page:16px}body:not(:has(.sd-hero)){padding-top:65px}.sd-announcement{padding:0 16px;font-size:12px}.sd-announcement a{font-size:12px}.sd-header{height:65px;padding:0 16px}.sd-wordmark{font-size:29px}.sd-header::after{left:16px;right:16px}.sd-hero{margin:30px 0 0;height:78svh;min-height:600px}.sd-hero__content{left:0;bottom:65px;padding:0 16px}.sd-hero h1{font-size:clamp(54px,10vw,70px)}.sd-intro{padding:75px 16px 95px;display:block}.sd-intro h2{font-size:44px;margin-bottom:28px}.sd-intro p{font-size:22px}.sd-shop-way{padding:65px 16px}.sd-shop-way h2{margin-bottom:35px}.sd-shop-way__grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 8px}.sd-shop-way__grid--rooms{grid-template-columns:1fr 1fr}.sd-shop-way__image{aspect-ratio:1.45}.sd-feature{display:block;padding:25px 16px 90px}.sd-feature__copy{position:static;margin-bottom:25px}.sd-feature__copy h2{font-size:38px;margin:13px 0}.sd-feature__copy p{max-width:500px;margin-bottom:20px}.sd-feature__visual>img{aspect-ratio:1.2}.sd-feature__gallery{grid-template-columns:repeat(2,1fr)}.sd-feature__products{grid-template-columns:repeat(2,1fr)}.sd-benefits{display:block;padding:35px 16px 85px}.sd-benefits__lead{font-size:24px;max-width:none;margin-bottom:25px}.sd-benefits__grid{grid-template-columns:1fr}.sd-benefits__card{min-height:380px}.sd-marquee{padding-top:50px}.sd-marquee h2{font-size:38px;margin:0 16px 20px}.sd-marquee__track a{font-size:58px}.sd-testimonials{display:block;padding:65px 16px}.sd-testimonials__intro{margin-bottom:20px}.sd-testimonials__intro h2{font-size:46px}.sd-testimonials__card,.sd-testimonials__card:first-child:last-child{flex-basis:88%;min-height:490px}.sd-follow{padding:60px 16px}.sd-follow h2{font-size:42px}.sd-follow__grid{grid-template-columns:repeat(3,1fr)}.sd-follow__grid a:nth-child(n+4){display:none}.sd-family{margin:0 16px 70px;display:flex;flex-direction:column-reverse}.sd-family__copy{padding:30px}.sd-family__media{height:330px}.sd-family h2{font-size:42px}}
+@media(prefers-reduced-motion:reduce){.sd-marquee__track{animation:none}.sd-hero__media video{display:none}}
+
+@font-face{font-family:Calibre;src:url("assets/reference-calibre-regular.woff2") format("woff2");font-weight:400}@font-face{font-family:Calibre;src:url("assets/reference-calibre-medium.woff2") format("woff2");font-weight:500}@font-face{font-family:Calibre;src:url("assets/reference-calibre-semibold.woff2") format("woff2");font-weight:600}
+:root{--page-width:110rem;--page-margin:24px;--color-background:#fff;--color-foreground:#111;--font-primary--family:Calibre}</style></head><body><div class="shopify-section"><div class="sd-site-top" data-site-top><div class="sd-announcement"><span>Beautiful furniture for real life.</span><a href="https://theslouchers.com/collections/slouchers">Shop Now</a></div><header class="sd-header" data-sd-header><div class="sd-header__bar"><a class="sd-wordmark" href="#" aria-label="Slouchers and Co home">slouchers<span>&amp;co</span></a><nav class="sd-nav" aria-label="Main navigation"><a href="https://theslouchers.com/collections/slouchers">Best Sellers</a><button type="button" data-mega-trigger="furniture" aria-expanded="false">Furniture</button><button type="button" data-mega-trigger="rooms" aria-expanded="false">Rooms</button><button type="button" data-mega-trigger="explore" aria-expanded="false">Explore</button></nav><div class="sd-header__actions"><a href="https://theslouchers.com/search" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></a><a href="https://theslouchers.com/account" aria-label="Account"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M4.5 21c0-4.4 3-7 7.5-7s7.5 2.6 7.5 7"/></svg></a><a href="https://theslouchers.com/cart" aria-label="Cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h2l2.5 12.5h12L22 7H5"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></a><button class="sd-mobile-toggle" type="button" data-mobile-trigger aria-expanded="false" aria-controls="sd-mobile-nav" aria-label="Open menu"><svg viewBox="0 0 24 24"><path d="M2 6h20M2 12h20M2 18h20"/></svg></button></div></div><div class="sd-mega" id="sd-mega-furniture" data-mega-panel="furniture" hidden><div class="sd-mega__lead"><a href="#">Best Sellers</a><a href="#">New Arrivals</a><a href="#">Special Prices</a><a href="#">Collections</a></div><div class="sd-mega__categories"><a href="#">Sofas & Sectionals</a><a href="#">Tables</a><a href="#">Beds</a><a href="#">Seating</a><a href="#">Storage</a><a href="#">Outdoor</a><a href="#">Accessories</a></div><div class="sd-mega__links"><a href="#">Shop All</a><a href="#">Sofas</a><a href="#">Sectionals</a><a href="#">Small Space Sectionals</a><a href="#">Corner Sofas</a><a href="#">Find Your Sofa</a></div><a class="sd-mega__feature" href="#">Find your favourite sofa ↗</a></div><div class="sd-mega" id="sd-mega-rooms" data-mega-panel="rooms" hidden><div class="sd-mega__lead"><a href="#">Living Room</a><a href="#">Dining Room</a><a href="#">Bedroom</a><a href="#">Office</a></div><div class="sd-mega__categories"><a href="#">Every room</a><a href="#">Room to gather</a></div><div class="sd-mega__links"><a href="#">Shop All Sofas</a><a href="#">Relaxed Living</a></div><a class="sd-mega__feature" href="#">Find your favourite sofa ↗</a></div><div class="sd-mega" id="sd-mega-explore" data-mega-panel="explore" hidden><div class="sd-mega__lead"><a href="#">Our Story</a><a href="#">Journal</a><a href="#">Contact</a></div><div class="sd-mega__categories"><a href="#">Discover Slouchers</a></div><div class="sd-mega__links"><a href="#">Delivery & Returns</a><a href="#">FAQ</a></div><a class="sd-mega__feature" href="#">Find your favourite sofa ↗</a></div><nav class="sd-mobile-nav" id="sd-mobile-nav" hidden><a href="#">Best Sellers</a><details><summary>Furniture</summary><a href="#">Shop all sofas</a></details><details><summary>Rooms</summary><a href="#">Living Room</a></details><details><summary>Explore</summary><a href="#">Our Story</a></details></nav></header></div></div><div class="shopify-section"><section class="sd-hero"><div class="sd-hero__media"><video autoplay muted loop playsinline preload="metadata" poster="assets/reference-hero.jpg"><source src="assets/reference-hero.mp4" type="video/mp4"></video></div><div class="sd-hero__shade"></div><div class="sd-hero__content"><h1>Home should<br>feel like Slouchers.</h1><a class="sd-outline-button sd-outline-button--light" href="https://theslouchers.com/collections/slouchers">Shop Now</a></div><button class="sd-hero__play" data-hero-play aria-label="Pause video"><span>Ⅱ</span></button></section></div><div class="shopify-section"><section class="sd-intro"><div><h2>A better day begins at home.</h2></div><div><p>Sofas made for how you really live. Warm, relaxed, and ready for all the moments worth staying in for.</p><a class="sd-outline-button" href="#">About Us</a></div></section></div><div class="shopify-section"><section class="sd-shop-way"><h2>Shop Your Way</h2><div class="sd-shop-way__tabs" role="tablist"><button role="tab" aria-selected="true" data-shop-tab="furniture">Furniture</button><button role="tab" aria-selected="false" data-shop-tab="rooms">Rooms</button></div><div class="sd-shop-way__grid" role="tabpanel" data-shop-panel="furniture"><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-01.jpg" alt="" loading="lazy"></div><span>Best Sellers</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-02.jpg" alt="" loading="lazy"></div><span>Sofas & Sectionals</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-03.jpg" alt="" loading="lazy"></div><span>Sideboards</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-04.jpg" alt="" loading="lazy"></div><span>Beds</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-05.jpg" alt="" loading="lazy"></div><span>Stools</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-06.jpg" alt="" loading="lazy"></div><span>Cabinets</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-07.jpg" alt="" loading="lazy"></div><span>Dining Tables</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-08.jpg" alt="" loading="lazy"></div><span>Storage Beds</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-09.jpg" alt="" loading="lazy"></div><span>Lounge Chairs</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-10.jpg" alt="" loading="lazy"></div><span>Side Tables</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-11.jpg" alt="" loading="lazy"></div><span>Media Units</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-12.jpg" alt="" loading="lazy"></div><span>Benches</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-13.jpg" alt="" loading="lazy"></div><span>Dining Chairs</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-14.jpg" alt="" loading="lazy"></div><span>Coffee Tables</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-15.jpg" alt="" loading="lazy"></div><span>Outdoor</span></a><a class="sd-shop-way__item" href="https://theslouchers.com/collections/slouchers"><div class="sd-shop-way__image"><img src="assets/reference-category-16.jpg" alt="" loading="lazy"></div><span>Dressers</span></a></div><div class="sd-shop-way__grid sd-shop-way__grid--rooms" data-shop-panel="rooms" role="tabpanel" hidden><a class="sd-shop-way__item" href="#"><div class="sd-shop-way__image"><img src="assets/reference-room-01.jpg" alt="" loading="lazy"></div><span>Living Room</span></a><a class="sd-shop-way__item" href="#"><div class="sd-shop-way__image"><img src="assets/reference-room-02.jpg" alt="" loading="lazy"></div><span>Outdoor</span></a><a class="sd-shop-way__item" href="#"><div class="sd-shop-way__image"><img src="assets/reference-room-03.jpg" alt="" loading="lazy"></div><span>Office</span></a><a class="sd-shop-way__item" href="#"><div class="sd-shop-way__image"><img src="assets/reference-room-04.jpg" alt="" loading="lazy"></div><span>Bedroom</span></a><a class="sd-shop-way__item" href="#"><div class="sd-shop-way__image"><img src="assets/reference-room-05.jpg" alt="" loading="lazy"></div><span>Dining Room</span></a><a class="sd-shop-way__item" href="#"><div class="sd-shop-way__image"><img src="assets/reference-room-06.jpg" alt="" loading="lazy"></div><span>Entryway</span></a></div></section></div><div class="shopify-section"><section class="sd-feature"><div class="sd-feature__copy"><span>The Slouchers Edit</span><h2>A room to call your own</h2><p>Make room for softer mornings, unhurried afternoons, and evenings that last a little longer.</p><a class="sd-outline-button" href="#">Read More</a></div><div class="sd-feature__visual"><img src="assets/reference-feature-main.jpg" alt="Interior" loading="lazy"><div class="sd-feature__gallery"><img src="assets/reference-feature-01.jpg" alt="" loading="lazy"><img src="assets/reference-feature-02.jpg" alt="" loading="lazy"><img src="assets/reference-feature-03.jpg" alt="" loading="lazy"><img src="assets/reference-feature-04.jpg" alt="" loading="lazy"></div><div class="sd-feature__products"><a class="sl-product-card" href="https://theslouchers.com/products/luxury-u-shape-sofa-velvet-fabric"><div class="sl-product-card__media"><img src="https://cdn.shopify.com/s/files/1/1113/6771/7202/files/s-l1600_83799e02-357a-474b-a61a-b4a3e0e7d898.jpg?v=1790355252" alt="Luxury U-Shape Sofa – Velvet Fabric"></div><div class="sl-product-card__info"><h3>Luxury U-Shape Sofa – Velvet Fabric</h3></div></a><a class="sl-product-card" href="https://theslouchers.com/products/luxury-verona-2c3-chesterfield-sofa-modern-beige-living-room"><div class="sl-product-card__media"><img src="https://cdn.shopify.com/s/files/1/1113/6771/7202/files/s-l1600_b4126156-7893-40a8-943a-7720aca5fd7d.jpg?v=1790355252" alt="Luxury Verona 2C3 Chesterfield Sofa Modern Beige Living Room"></div><div class="sl-product-card__info"><h3>Luxury Verona 2C3 Chesterfield Sofa Modern Beige Living Room</h3></div></a><a class="sl-product-card" href="https://theslouchers.com/products/borios-3c1-corner-sofa-blue-velvet-luxury-suite"><div class="sl-product-card__media"><img src="https://cdn.shopify.com/s/files/1/1113/6771/7202/files/s-l1600_c08df12f-f9f0-42f7-9031-ebc8651062d3.jpg?v=1790355374" alt="Borios 3C1 Corner Sofa – Blue Velvet Luxury Suite"></div><div class="sl-product-card__info"><h3>Borios 3C1 Corner Sofa – Blue Velvet Luxury Suite</h3></div></a><a class="sl-product-card" href="https://theslouchers.com/products/elegance-chesterfield-2c2-corner-sofa-mink-velvet"><div class="sl-product-card__media"><img src="https://cdn.shopify.com/s/files/1/1113/6771/7202/files/s-l1600_58ffbbb6-969b-4ba3-a16a-19952ee3f349.jpg?v=1790355375" alt="Elegance Chesterfield 2C2 Corner Sofa – Mink Velvet"></div><div class="sl-product-card__info"><h3>Elegance Chesterfield 2C2 Corner Sofa – Mink Velvet</h3></div></a></div></div></section></div><div class="shopify-section"><section class="sd-benefits"><div class="sd-benefits__lead">We make finding your favourite seat simple.</div><div class="sd-benefits__grid"><div class="sd-benefits__card"><img src="assets/reference-benefit-01.png" alt="" loading="lazy"><h3>Thoughtful delivery</h3><p>Comfort, delivered to your door.</p></div><div class="sd-benefits__card"><img src="assets/reference-benefit-02.png" alt="" loading="lazy"><h3>Made for real life</h3><p>Beautiful pieces to make yours.</p></div><div class="sd-benefits__card"><img src="assets/reference-benefit-03.png" alt="" loading="lazy"><h3>Here to help</h3><p>Talk to us about your perfect sofa.</p></div></div></section></div><div class="shopify-section"><section class="sd-marquee"><h2>Explore Our Collection</h2><div class="sd-marquee__viewport"><div class="sd-marquee__track"><a href="https://theslouchers.com/collections/slouchers"><span class="sd-marquee__drawing">⌂</span>Corner Sofas</a><a href="https://theslouchers.com/collections/slouchers"><span class="sd-marquee__drawing">⌂</span>Modular Sofas</a><a href="https://theslouchers.com/collections/slouchers"><span class="sd-marquee__drawing">⌂</span>Chaise Sofas</a><a href="https://theslouchers.com/collections/slouchers"><span class="sd-marquee__drawing">⌂</span>Armchairs</a><a href="https://theslouchers.com/collections/slouchers"><span class="sd-marquee__drawing">⌂</span>Corner Sofas</a><a href="https://theslouchers.com/collections/slouchers"><span class="sd-marquee__drawing">⌂</span>Modular Sofas</a><a href="https://theslouchers.com/collections/slouchers"><span class="sd-marquee__drawing">⌂</span>Chaise Sofas</a><a href="https://theslouchers.com/collections/slouchers"><span class="sd-marquee__drawing">⌂</span>Armchairs</a><a href="https://theslouchers.com/collections/slouchers"><span class="sd-marquee__drawing">⌂</span>Corner Sofas</a><a href="https://theslouchers.com/collections/slouchers"><span class="sd-marquee__drawing">⌂</span>Modular Sofas</a><a href="https://theslouchers.com/collections/slouchers"><span class="sd-marquee__drawing">⌂</span>Chaise Sofas</a><a href="https://theslouchers.com/collections/slouchers"><span class="sd-marquee__drawing">⌂</span>Armchairs</a></div></div></section></div><div class="shopify-section"><section class="sd-testimonials"><div class="sd-testimonials__intro"><h2>In Your Words</h2><p>Good furniture makes space for better moments.</p></div><div class="sd-testimonials__cards"><a class="sd-testimonials__card" href="#"><div class="sd-testimonials__image"><img src="assets/reference-review.jpg" loading="lazy" alt="Furnished living room"></div><div class="sd-testimonials__quote"><p>Make yourself comfortable. Stay as long as you like.</p><small>— SLOUCHERS & CO.</small><span class="sd-outline-button">Shop sofas</span></div></a></div></section></div><div class="shopify-section"><section class="sd-follow"><div class="sd-follow__heading"><h2>Follow Us</h2><a href="#">@slouchersandco</a></div><div class="sd-follow__grid"><a href="https://theslouchers.com/products/luxury-u-shape-sofa-velvet-fabric"><img src="https://cdn.shopify.com/s/files/1/1113/6771/7202/files/s-l1600_83799e02-357a-474b-a61a-b4a3e0e7d898.jpg?v=1790355252" loading="lazy" alt="Luxury U-Shape Sofa – Velvet Fabric"></a><a href="https://theslouchers.com/products/luxury-verona-2c3-chesterfield-sofa-modern-beige-living-room"><img src="https://cdn.shopify.com/s/files/1/1113/6771/7202/files/s-l1600_b4126156-7893-40a8-943a-7720aca5fd7d.jpg?v=1790355252" loading="lazy" alt="Luxury Verona 2C3 Chesterfield Sofa Modern Beige Living Room"></a><a href="https://theslouchers.com/products/borios-3c1-corner-sofa-blue-velvet-luxury-suite"><img src="https://cdn.shopify.com/s/files/1/1113/6771/7202/files/s-l1600_c08df12f-f9f0-42f7-9031-ebc8651062d3.jpg?v=1790355374" loading="lazy" alt="Borios 3C1 Corner Sofa – Blue Velvet Luxury Suite"></a><a href="https://theslouchers.com/products/elegance-chesterfield-2c2-corner-sofa-mink-velvet"><img src="https://cdn.shopify.com/s/files/1/1113/6771/7202/files/s-l1600_58ffbbb6-969b-4ba3-a16a-19952ee3f349.jpg?v=1790355375" loading="lazy" alt="Elegance Chesterfield 2C2 Corner Sofa – Mink Velvet"></a><a href="https://theslouchers.com/products/khalifa-3-2-sofa-set-luxury-velvet"><img src="https://cdn.shopify.com/s/files/1/1113/6771/7202/files/s-l1600_31401d98-32ce-4588-84ea-c7380f5ee1d1.jpg?v=1790355376" loading="lazy" alt="Khalifa 3+2 Sofa Set – Luxury Velvet"></a></div></section></div><div class="shopify-section"><section class="sd-family"><div class="sd-family__copy"><h2>A home for every kind of day</h2><p>A good sofa changes the way a room feels. Find one that makes space for every moment.</p><a class="sd-outline-button" href="#">Explore the collection</a></div><div class="sd-family__media"><img src="assets/reference-room-01.jpg" loading="lazy" alt="Living room"></div></section></div><div class="shopify-section"><footer class="sl-footer"><a class="sl-footer-wordmark" href="#">SLOUCHERS<span>&amp;CO.</span></a><div class="sl-footer-grid"><div><h2>About</h2><a href="#">Our story</a><a href="#">Shop sofas</a></div><div><h2>Help & advice</h2><a href="#">Contact us</a><a href="#">Delivery & returns</a></div><div><h2>Follow along</h2><a href="#">Instagram</a></div><div class="sl-footer-newsletter"><h2>Subscribe</h2><p>Fresh ideas and good furniture.</p></div></div></footer></div><script>document.addEventListener('click', function (event) {
+  const next = event.target.closest('[data-scroll-next]');
+  if (next) {
+    const track = next.previousElementSibling;
+    if (track) track.scrollBy({left: track.clientWidth * .75, behavior: 'smooth'});
+  }
+  const thumb = event.target.closest('[data-product-image]');
+  if (thumb) {
+    const image = document.getElementById('sl-main-product-image');
+    if (image) { image.src = thumb.dataset.productImage; image.srcset = ''; }
+    document.querySelectorAll('.sl-pdp__thumb').forEach(el => el.style.border = '1px solid #eee');
+    thumb.style.border = '2px solid #222';
+  }
+});
+
+(() => {
+  const siteTop = document.querySelector('[data-site-top]');
+  if (!siteTop) return;
+  const header = siteTop.querySelector('[data-sd-header]');
+  const triggers = [...siteTop.querySelectorAll('[data-mega-trigger]')];
+  const panels = [...siteTop.querySelectorAll('[data-mega-panel]')];
+  const mobileButton = siteTop.querySelector('[data-mobile-trigger]');
+  const mobilePanel = siteTop.querySelector('#sd-mobile-nav');
+  let closeTimer;
+  const setScrolled = () => siteTop.classList.toggle('is-scrolled', window.scrollY > 90);
+  const closeMega = () => {
+    panels.forEach(panel => { panel.hidden = true; });
+    triggers.forEach(button => button.setAttribute('aria-expanded', 'false'));
+    siteTop.classList.remove('is-open');
+  };
+  const openMega = name => {
+    if (window.matchMedia('(max-width: 760px)').matches) return;
+    window.clearTimeout(closeTimer);
+    panels.forEach(panel => { panel.hidden = panel.dataset.megaPanel !== name; });
+    triggers.forEach(button => button.setAttribute('aria-expanded', String(button.dataset.megaTrigger === name)));
+    siteTop.classList.add('is-open');
+  };
+  triggers.forEach(button => {
+    button.addEventListener('mouseenter', () => openMega(button.dataset.megaTrigger));
+    button.addEventListener('focus', () => openMega(button.dataset.megaTrigger));
+    button.addEventListener('click', () => {
+      if (button.getAttribute('aria-expanded') === 'true') closeMega();
+      else openMega(button.dataset.megaTrigger);
+    });
+  });
+  header.addEventListener('mouseleave', () => { closeTimer = window.setTimeout(closeMega, 170); });
+  header.addEventListener('mouseenter', () => window.clearTimeout(closeTimer));
+  document.addEventListener('click', event => {
+    if (!siteTop.contains(event.target)) {
+      closeMega();
+      if (mobilePanel) mobilePanel.hidden = true;
+      if (mobileButton) mobileButton.setAttribute('aria-expanded', 'false');
+    }
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeMega();
+      if (mobilePanel) mobilePanel.hidden = true;
+      if (mobileButton) mobileButton.setAttribute('aria-expanded', 'false');
+    }
+  });
+  if (mobileButton && mobilePanel) mobileButton.addEventListener('click', () => {
+    const opening = mobilePanel.hidden;
+    mobilePanel.hidden = !opening;
+    mobileButton.setAttribute('aria-expanded', String(opening));
+    siteTop.classList.toggle('is-open', opening);
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 760 && mobilePanel) mobilePanel.hidden = true;
+    else closeMega();
+  });
+  window.addEventListener('scroll', setScrolled, { passive: true });
+  setScrolled();
+  document.querySelectorAll('[data-shop-tab]').forEach(tab => tab.addEventListener('click', () => {
+    const target = tab.dataset.shopTab;
+    document.querySelectorAll('[data-shop-tab]').forEach(item => item.setAttribute('aria-selected', String(item === tab)));
+    document.querySelectorAll('[data-shop-panel]').forEach(panel => { panel.hidden = panel.dataset.shopPanel !== target; });
+  }));
+  document.querySelectorAll('[data-hero-play]').forEach(button => {
+    const video = button.closest('.sd-hero')?.querySelector('video');
+    if (!video) { button.hidden = true; return; }
+    button.addEventListener('click', () => {
+      if (video.paused) {
+        video.play().then(() => {
+          button.setAttribute('aria-label', 'Pause video');
+          button.querySelector('span').textContent = 'Ⅱ';
+        }).catch(() => {});
+      } else {
+        video.pause();
+        button.setAttribute('aria-label', 'Play video');
+        button.querySelector('span').textContent = '▶';
+      }
+    });
+  });
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.body.classList.add('sd-motion');
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+    }), { threshold: .08 });
+    document.querySelectorAll('.sd-reveal').forEach(element => observer.observe(element));
+  } else document.querySelectorAll('.sd-reveal').forEach(element => element.classList.add('is-visible'));
+})();
+</script></body></html>
