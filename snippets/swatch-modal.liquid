@@ -1,175 +1,172 @@
-<div id="swatch-modal" class="swatch-modal">
-  <div class="swatch-modal__overlay"></div>
-  <div class="swatch-modal__content">
-    <button class="swatch-modal__close" aria-label="Close">&times;</button>
-    <h2>Choose Your Fabric</h2>
-    <div class="swatch-modal__grid" id="swatch-modal-grid">
-      <!-- Swatches will be populated by JavaScript -->
+{% doc %}
+Renders the global fabric swatch drawer. Swatches are loaded from the Shopify theme asset `swatches.json`.
+{% enddoc %}
+
+<div id="swatch-modal" class="swatch-modal" aria-hidden="true">
+  <div class="swatch-modal__overlay" data-swatch-close></div>
+  <aside class="swatch-modal__panel" role="dialog" aria-modal="true" aria-labelledby="swatch-modal-title">
+    <div class="swatch-modal__header">
+      <div>
+        <p>Fabric &amp; colour</p>
+        <h2 id="swatch-modal-title">Choose your fabric</h2>
+      </div>
+      <button class="swatch-modal__close" type="button" aria-label="Close fabric drawer" data-swatch-close>&times;</button>
     </div>
-  </div>
+
+    <div class="swatch-modal__tools">
+      <label class="swatch-modal__search">
+        <span class="visually-hidden">Search fabrics</span>
+        <input type="search" placeholder="Search 180+ fabrics" data-swatch-search>
+      </label>
+      <div class="swatch-modal__count" data-swatch-total>Loading fabrics...</div>
+    </div>
+
+    <div class="swatch-modal__filters" data-swatch-filters></div>
+    <div class="swatch-modal__grid" data-swatch-grid></div>
+    <div class="swatch-modal__empty" data-swatch-empty hidden>No fabrics found.</div>
+
+    <div class="swatch-modal__footer">
+      <button type="button" class="swatch-modal__cta" data-swatch-close>Done</button>
+      <a href="/pages/contact">Order free swatches</a>
+    </div>
+  </aside>
 </div>
 
 <style>
-.swatch-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-}
-
-.swatch-modal.is-open {
-  display: block;
-}
-
-.swatch-modal__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  cursor: pointer;
-}
-
-.swatch-modal__content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 40px;
-  border-radius: 8px;
-  max-width: 800px;
-  width: 90%;
-  max-height: 80vh;
-  overflow-y: auto;
-}
-
-.swatch-modal__close {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: none;
-  border: none;
-  font-size: 32px;
-  cursor: pointer;
-  color: #000;
-  padding: 0;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.swatch-modal__close:hover {
-  opacity: 0.6;
-}
-
-.swatch-modal__content h2 {
-  font-size: 28px;
-  font-weight: 700;
-  margin: 0 0 32px;
-  letter-spacing: -0.02em;
-}
-
-.swatch-modal__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 24px;
-}
-
-.swatch-modal__fabric-group {
-  text-align: center;
-}
-
-.swatch-modal__fabric-type {
-  font-size: 14px;
-  font-weight: 700;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.swatch-modal__colors {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.swatch-modal__color {
-  aspect-ratio: 1;
-  border-radius: 4px;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: border-color 0.3s, transform 0.3s;
-}
-
-.swatch-modal__color:hover {
-  border-color: #000;
-  transform: scale(1.05);
-}
-
-.swatch-modal__color-name {
-  font-size: 12px;
-  margin-top: 8px;
-  color: #666;
-}
+.swatch-modal{position:fixed;inset:0;z-index:99999;display:none}.swatch-modal.is-open{display:block}.swatch-modal__overlay{position:absolute;inset:0;background:rgba(0,0,0,.42)}.swatch-modal__panel{position:absolute;top:0;right:0;width:min(100%,680px);height:100%;background:#fff;color:#111;display:flex;flex-direction:column;padding:26px 28px;box-shadow:-12px 0 35px #0002}.swatch-modal__header{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;border-bottom:1px solid #ddd;padding-bottom:20px}.swatch-modal__header p{margin:0 0 5px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#777}.swatch-modal__header h2{font:700 clamp(34px,4vw,54px)/.95 Calibre,Helvetica,Arial,sans-serif;letter-spacing:-.055em;margin:0}.swatch-modal__close{border:1px solid #111;background:#fff;width:42px;height:42px;font-size:30px;line-height:1}.swatch-modal__tools{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;padding:18px 0 12px}.swatch-modal__search input{width:100%;height:44px;border:1px solid #d6d0ca;background:#fff;padding:0 13px;font:inherit}.swatch-modal__count{font-size:12px;font-weight:700;color:#666;white-space:nowrap}.swatch-modal__filters{display:flex;gap:8px;overflow:auto;padding:0 0 16px;scrollbar-width:none}.swatch-modal__filters::-webkit-scrollbar{display:none}.swatch-modal__filter{height:34px;border:1px solid #d6d0ca;background:#fff;padding:0 12px;white-space:nowrap;font-size:12px}.swatch-modal__filter.is-active{background:#111;color:#fff;border-color:#111}.swatch-modal__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px 10px;overflow:auto;padding:4px 2px 22px}.swatch-modal__item{border:0;background:none;padding:0;text-align:left;min-width:0}.swatch-modal__chip{display:grid;place-items:center;width:100%;aspect-ratio:1.35;background:#f4f2ee;background-size:cover;background-position:center;border:1px solid #0002;margin-bottom:7px;color:#777;font-size:11px;line-height:1.1;text-align:center;padding:8px}.swatch-modal__chip.has-image{background-image:var(--swatch-image);color:transparent}.swatch-modal__item:hover .swatch-modal__chip,.swatch-modal__item.is-selected .swatch-modal__chip{outline:2px solid #111;outline-offset:2px}.swatch-modal__item b{display:block;font-size:12px;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.swatch-modal__item small{display:block;margin-top:3px;color:#777;font-size:11px;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.swatch-modal__empty{padding:40px 0;color:#777;text-align:center}.swatch-modal__footer{border-top:1px solid #ddd;padding-top:16px;display:flex;align-items:center;justify-content:space-between;gap:12px}.swatch-modal__cta{height:44px;background:#111;color:#fff;border:0;padding:0 28px;font-weight:700}.swatch-modal__footer a{font-size:13px;color:#111;text-decoration:underline}@media(max-width:640px){.swatch-modal__panel{padding:20px 16px}.swatch-modal__tools{grid-template-columns:1fr}.swatch-modal__grid{grid-template-columns:repeat(3,minmax(0,1fr))}.swatch-modal__footer{align-items:stretch;flex-direction:column}.swatch-modal__cta{width:100%}}
 </style>
 
 <script>
-(function() {
+(() => {
   const modal = document.getElementById('swatch-modal');
-  const overlay = modal.querySelector('.swatch-modal__overlay');
-  const closeBtn = modal.querySelector('.swatch-modal__close');
-  const grid = modal.querySelector('.swatch-modal__grid');
+  if (!modal) return;
 
-  function openSwatchModal() {
-    // Load swatches from header
-    let swatchesData = window.swatchesData;
+  const grid = modal.querySelector('[data-swatch-grid]');
+  const filters = modal.querySelector('[data-swatch-filters]');
+  const search = modal.querySelector('[data-swatch-search]');
+  const total = modal.querySelector('[data-swatch-total]');
+  const empty = modal.querySelector('[data-swatch-empty]');
+  const swatchUrl = '{{ 'swatches.json' | asset_url }}';
+  let swatches = [];
+  let activeFabric = 'All';
+  let selectedKey = '';
 
-    // Fetch if not already loaded
-    if (!swatchesData) {
-      fetch('{{ 'swatches.json' | asset_url }}')
-        .then(r => r.json())
-        .then(data => {
-          swatchesData = data;
-          renderSwatches(swatchesData);
-          modal.classList.add('is-open');
-        });
-    } else {
-      renderSwatches(swatchesData);
-      modal.classList.add('is-open');
-    }
+  function escapeHtml(value) {
+    return String(value || '').replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    })[char]);
   }
 
-  function renderSwatches(data) {
-    if (!data || !data.swatches) return;
+  function flattenSwatches(data) {
+    if (!data || !Array.isArray(data.swatches)) return [];
+    return data.swatches.flatMap((group) => {
+      const fabric = group.type || 'Fabric';
+      return (group.colors || []).map((color) => ({
+        fabric,
+        name: color.name,
+        hex: color.hex,
+        image: color.image || color.image_url || color.src || color.url || color.preview_image || color.file || '',
+        key: `${fabric}::${color.name}`
+      }));
+    });
+  }
 
-    grid.innerHTML = data.swatches.map(fabricType => `
-      <div class="swatch-modal__fabric-group">
-        <div class="swatch-modal__fabric-type">${fabricType.type}</div>
-        <div class="swatch-modal__colors">
-          ${fabricType.colors.map(color => `
-            <div
-              class="swatch-modal__color"
-              style="background:${color.hex}"
-              title="${color.name}"
-              onclick="alert('Added ${color.name} to cart')"
-            ></div>
-          `).join('')}
-        </div>
-      </div>
+  function allSwatches(data) {
+    const seen = new Set();
+    return [...(window.SlouchersInlineSwatches || []), ...flattenSwatches(data)].filter((swatch) => {
+      const key = `${swatch.fabric}::${swatch.name}`;
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
+  async function loadSwatches() {
+    if (window.SlouchersSwatchesData) return window.SlouchersSwatchesData;
+    if (!window.SlouchersSwatchesPromise) {
+      window.SlouchersSwatchesPromise = fetch(swatchUrl).then((response) => response.json()).then((data) => {
+        window.SlouchersSwatchesData = data;
+        window.swatchesData = data;
+        return data;
+      });
+    }
+    return window.SlouchersSwatchesPromise;
+  }
+
+  function renderFilters() {
+    const fabrics = ['All', ...new Set(swatches.map((swatch) => swatch.fabric))];
+    filters.innerHTML = fabrics.map((fabric) => `
+      <button class="swatch-modal__filter ${fabric === activeFabric ? 'is-active' : ''}" type="button" data-fabric="${escapeHtml(fabric)}">${escapeHtml(fabric)}</button>
     `).join('');
+    filters.querySelectorAll('button').forEach((button) => {
+      button.addEventListener('click', () => {
+        activeFabric = button.dataset.fabric;
+        render();
+      });
+    });
+  }
+
+  function render() {
+    const query = search.value.trim().toLowerCase();
+    const visible = swatches.filter((swatch) => {
+      const matchesFabric = activeFabric === 'All' || swatch.fabric === activeFabric;
+      const matchesSearch = !query || `${swatch.fabric} ${swatch.name}`.toLowerCase().includes(query);
+      return matchesFabric && matchesSearch;
+    });
+    total.textContent = `${visible.length} of ${swatches.length} fabrics`;
+    empty.hidden = visible.length > 0;
+    grid.innerHTML = visible.map((swatch) => `
+      <button class="swatch-modal__item ${swatch.key === selectedKey ? 'is-selected' : ''}" type="button" data-key="${escapeHtml(swatch.key)}" data-image="${escapeHtml(swatch.image)}">
+        <span class="swatch-modal__chip ${swatch.image ? 'has-image' : ''}">${swatch.image ? '' : 'Image needed'}</span>
+        <b>${escapeHtml(swatch.name)}</b>
+        <small>${escapeHtml(swatch.fabric)}</small>
+      </button>
+    `).join('');
+    grid.querySelectorAll('.swatch-modal__item').forEach((button) => {
+      const image = button.dataset.image;
+      if (image) button.querySelector('.swatch-modal__chip').style.setProperty('--swatch-image', `url("${image}")`);
+    });
+    grid.querySelectorAll('.swatch-modal__item').forEach((button) => {
+      button.addEventListener('click', () => {
+        const swatch = swatches.find((item) => item.key === button.dataset.key);
+        if (!swatch) return;
+        selectedKey = swatch.key;
+        window.dispatchEvent(new CustomEvent('slouchers:swatch-selected', { detail: swatch }));
+        render();
+      });
+    });
+    renderFilters();
+  }
+
+  function openSwatchModal() {
+    modal.classList.add('is-open');
+    modal.setAttribute('aria-hidden', 'false');
+    total.textContent = 'Loading fabrics...';
+    loadSwatches().then((data) => {
+      swatches = allSwatches(data);
+      render();
+      search.focus();
+    }).catch(() => {
+      total.textContent = 'Fabrics unavailable';
+      empty.hidden = false;
+    });
   }
 
   function closeSwatchModal() {
     modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
   }
 
-  // Event listeners
-  closeBtn.addEventListener('click', closeSwatchModal);
-  overlay.addEventListener('click', closeSwatchModal);
+  search.addEventListener('input', render);
+  modal.querySelectorAll('[data-swatch-close]').forEach((button) => button.addEventListener('click', closeSwatchModal));
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal.classList.contains('is-open')) closeSwatchModal();
+  });
 
-  // Expose to global scope
   window.openSwatchModal = openSwatchModal;
 })();
 </script>

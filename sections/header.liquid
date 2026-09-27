@@ -139,8 +139,16 @@ document.addEventListener('DOMContentLoaded', function() {
   // Load swatches
   async function loadSwatches() {
     try {
-      const response = await fetch('{{ 'swatches.json' | asset_url }}');
-      swatchesData = await response.json();
+      if (window.SlouchersSwatchesData) {
+        swatchesData = window.SlouchersSwatchesData;
+      } else {
+        if (!window.SlouchersSwatchesPromise) {
+          window.SlouchersSwatchesPromise = fetch('{{ 'swatches.json' | asset_url }}').then(response => response.json());
+        }
+        swatchesData = await window.SlouchersSwatchesPromise;
+        window.SlouchersSwatchesData = swatchesData;
+      }
+      window.swatchesData = swatchesData;
       renderSwatches();
     } catch (error) {
       console.error('Error loading swatches:', error);
@@ -154,7 +162,10 @@ document.addEventListener('DOMContentLoaded', function() {
     container.innerHTML = swatchesData.swatches.map(fabricType => `
       <div class="sd-mega__fabric-card">
         <div class="sd-mega__fabric-samples">
-          ${fabricType.colors.map(color => `<div style="background:${color.hex}" title="${color.name}"></div>`).join('')}
+          ${fabricType.colors.map(color => {
+            const image = color.image || color.image_url || color.src || color.url || color.preview_image || color.file || '';
+            return `<div class="${image ? 'has-image' : 'is-missing'}" ${image ? `style="background-image:url('${image}')"` : ''} title="${color.name}">${image ? '' : 'Image needed'}</div>`;
+          }).join('')}
         </div>
         <p>${fabricType.type}</p>
       </div>
@@ -193,8 +204,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Store swatches data globally for product pages
-  window.swatchesData = swatchesData;
   loadSwatches();
 });
 </script>

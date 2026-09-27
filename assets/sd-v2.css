@@ -1,6 +1,8 @@
 body{font-family:Calibre,Helvetica,Arial,sans-serif;background:#fff;color:#111}
 .shopify-section:has(> .sd-hero),.shopify-section:has(> .sd-intro),.shopify-section:has(> .sd-shop-way),.shopify-section:has(> .sd-feature),.shopify-section:has(> .sd-benefits),.shopify-section:has(> .sd-marquee),.shopify-section:has(> .sd-testimonials),.shopify-section:has(> .sd-follow),.shopify-section:has(> .sd-family){display:block}
 .shopify-section:has(> .sd-site-top){position:static;display:block;height:0;z-index:70}
+body:has(.cz-page){padding-top:0!important}
+body:has(.cz-page) .shopify-section:has(> .sd-site-top){height:auto}
 :root{--sd-yellow:#ffda5c;--sd-peach:#fee1d5;--sd-page:24px}
 .sd-site-top{z-index:70}
 .sd-announcement{height:30px;background:var(--sd-yellow);font-size:16px;font-weight:700;line-height:1}
