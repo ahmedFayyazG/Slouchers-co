@@ -18,14 +18,37 @@
       </div>
     </div>
     <div class="sd-mega" id="sd-mega-sofas" data-mega-panel="sofas" hidden>
-      <div class="sd-mega__lead"><a href="{{ routes.all_products_collection_url }}">Sofas &amp; Sectionals</a><a href="{{ routes.all_products_collection_url }}">Corner Sofas</a><a href="{{ routes.all_products_collection_url }}">Modular Sofas</a></div>
-      <div class="sd-mega__categories"><a href="{{ routes.all_products_collection_url }}">Chaise Sofas</a><a href="{{ routes.all_products_collection_url }}">Sofa Beds</a><a href="{{ routes.all_products_collection_url }}">Armchairs</a></div>
-      <div class="sd-mega__links"><a href="{{ routes.collections_url }}/slouchers">Shop All</a>{% for link in section.settings.sofas_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% for child in link.links %}<a href="{{ child.url }}">{{ child.title | escape }}</a>{% endfor %}{% endfor %}</div>
-      <a class="sd-mega__feature" href="{{ routes.collections_url }}/slouchers">Find your favourite sofa <span>↗</span></a>
+      <div class="sd-mega__sidebar">
+        <div class="sd-mega__sidebar-section">
+          <h3>SHOP SOFAS BY</h3>
+          <a href="#">Price Range</a>
+          <a href="#">Collection</a>
+          <a href="#">Type</a>
+          <a href="#">Fabric</a>
+          <a href="#">Room</a>
+        </div>
+      </div>
+      <div class="sd-mega__content">
+        <div class="sd-mega__column">
+          <h4>PRICE RANGE</h4>
+          <a href="#">Premium Sofas</a>
+          <a href="#">Affordable Sofas</a>
+        </div>
+        <div class="sd-mega__column">
+          <a href="#">Corner Sofas Under £999</a>
+          <a href="#">3+2 Sofas Under £999</a>
+        </div>
+      </div>
+      <div class="sd-mega__featured">
+        <h4>FEATURED</h4>
+        <h3><a href="{{ routes.collections_url }}/slouchers">Made for Every Home</a></h3>
+        <p>Discover sofas made for your lifestyle and space.</p>
+        <a href="{{ routes.collections_url }}/slouchers" class="sd-mega__cta">SHOP ALL SOFAS</a>
+      </div>
     </div>
     <nav class="sd-mobile-nav" id="sd-mobile-nav" aria-label="Mobile navigation" hidden>
       <a href="{{ routes.all_products_collection_url }}">Best Sellers</a>
-      <details><summary>Shop Sofas by</summary><a href="{{ routes.all_products_collection_url }}">Sofas &amp; Sectionals</a><a href="{{ routes.all_products_collection_url }}">Corner Sofas</a><a href="{{ routes.all_products_collection_url }}">Modular Sofas</a><a href="{{ routes.all_products_collection_url }}">Chaise Sofas</a>{% for link in section.settings.sofas_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}</details>
+      <details><summary>Shop Sofas by</summary><a href="#">Price Range</a><a href="#">Collection</a><a href="#">Type</a><a href="#">Fabric</a><a href="#">Room</a><a href="#">Corner Sofas Under £999</a><a href="#">3+2 Sofas Under £999</a></details>
       <a href="{{ routes.all_products_collection_url }}?type=Footstools">Footstools</a>
       <a href="{{ routes.all_products_collection_url }}?sort_by=created-descending">New Arrival</a>
       <a href="{{ routes.collections_url }}">Shop all</a>
