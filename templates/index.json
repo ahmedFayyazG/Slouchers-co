@@ -2,7 +2,12 @@
   "sections": {
     "hero": {
       "type": "sl-hero",
-      "settings": {}
+      "settings": {
+        "heading": "Feel right\nat home.",
+        "button_label": "Shop Now",
+        "button_link": "/collections/slouchers",
+        "featured_product": "luxury-u-shape-sofa-velvet-fabric"
+      }
     },
     "trending": {
       "type": "sl-product-rail",
@@ -273,21 +278,66 @@
         "two",
         "three"
       ]
+    },
+    "intro": {
+      "type": "sd-intro",
+      "settings": {
+        "heading": "A better day begins at home.",
+        "body": "Settle into a sofa that makes every day feel a little easier. Thoughtful shapes, inviting fabrics, and room for everyone to get comfortable.",
+        "link_text": "About Us"
+      }
+    },
+    "shop_way": {
+      "type": "sd-shop-way",
+      "settings": {
+        "heading": "Shop Your Way",
+        "collection": "slouchers"
+      }
+    },
+    "benefits": {
+      "type": "sd-benefits",
+      "settings": {
+        "heading": "We make finding your favourite seat simple."
+      },
+      "blocks": {
+        "delivery": {
+          "type": "benefit",
+          "settings": {
+            "title": "Thoughtful delivery",
+            "text": "Comfort, delivered to your door."
+          }
+        },
+        "comfort": {
+          "type": "benefit",
+          "settings": {
+            "title": "Made for real life",
+            "text": "Beautiful pieces to make yours."
+          }
+        },
+        "help": {
+          "type": "benefit",
+          "settings": {
+            "title": "Here to help",
+            "text": "Talk to us about your perfect sofa."
+          }
+        }
+      },
+      "block_order": [
+        "delivery",
+        "comfort",
+        "help"
+      ]
     }
   },
   "order": [
     "hero",
+    "intro",
+    "shop_way",
     "trending",
-    "categories",
     "modular",
     "arrivals",
-    "types",
+    "benefits",
     "moments",
-    "swatches",
-    "statement",
-    "faq",
-    "living",
-    "collections",
     "story"
   ]
 }

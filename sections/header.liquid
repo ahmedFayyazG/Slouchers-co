@@ -1,22 +1,46 @@
-<div class="sl-announcement">{{ section.settings.announcement | escape }}</div>
-<header class="sl-header">
-  <a class="sl-wordmark" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }}">SLOUCHERS<span>&amp;CO.</span></a>
-  <nav class="sl-desktop-nav" aria-label="Primary navigation">
-    {% if section.settings.menu != blank %}
-      {% for link in section.settings.menu.links %}
-        {% if link.links != blank %}
-          <details class="sl-nav-dropdown"><summary>{{ link.title | escape }}</summary><div class="sl-nav-dropdown__panel">{% for child in link.links %}<a href="{{ child.url }}">{{ child.title | escape }}</a>{% endfor %}</div></details>
-        {% else %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endif %}
-      {% endfor %}
-    {% else %}
-      <a href="{{ routes.all_products_collection_url }}">New arrivals</a>
-      <details class="sl-nav-dropdown"><summary>Products</summary><div class="sl-nav-dropdown__panel"><a href="{{ routes.all_products_collection_url }}">All sofas</a><a href="{{ routes.collections_url }}/modular-sofas">Modular sofas</a><a href="{{ routes.collections_url }}/corner-sofas">Corner sofas</a><a href="{{ routes.collections_url }}/sofa-beds">Sofa beds</a></div></details>
-      <a href="/pages/about-us">About</a>
-    {% endif %}
-  </nav>
-  <div class="sl-header-actions"><a href="{{ routes.search_url }}">Search</a><a href="{{ routes.cart_url }}">Bag ({{ cart.item_count }})</a></div>
-  <details class="sl-mobile-menu"><summary aria-label="Open menu">☰</summary><nav aria-label="Mobile navigation"><a href="{{ routes.all_products_collection_url }}">Shop all</a>{% for link in section.settings.menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}<a href="/pages/about-us">About</a><a href="{{ routes.search_url }}">Search</a></nav></details>
-</header>
+<div class="sd-site-top" data-site-top>
+  <div class="sd-announcement"><span>{{ section.settings.announcement | escape }}</span><a href="{{ section.settings.announcement_link | default: routes.all_products_collection_url }}">{{ section.settings.announcement_cta | escape }}</a></div>
+  <header class="sd-header" data-sd-header>
+    <div class="sd-header__bar">
+      <a class="sd-wordmark" href="{{ routes.root_url }}" aria-label="{{ shop.name | escape }} home">slouchers<span>&amp;co</span></a>
+      <nav class="sd-nav" aria-label="Main navigation">
+        <a href="{{ routes.all_products_collection_url }}">Best Sellers</a>
+        <button type="button" data-mega-trigger="furniture" aria-expanded="false" aria-controls="sd-mega-furniture">Furniture</button>
+        <button type="button" data-mega-trigger="rooms" aria-expanded="false" aria-controls="sd-mega-rooms">Rooms</button>
+        <button type="button" data-mega-trigger="explore" aria-expanded="false" aria-controls="sd-mega-explore">Explore</button>
+      </nav>
+      <div class="sd-header__actions">
+        <a href="{{ routes.search_url }}" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></a>
+        <a class="sd-account" href="{{ routes.account_url }}" aria-label="Account"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M4.5 21c0-4.4 3-7 7.5-7s7.5 2.6 7.5 7"/></svg></a>
+        <a href="{{ routes.cart_url }}" aria-label="Cart, {{ cart.item_count }} items"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h2l2.5 12.5h12L22 7H5"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>{% if cart.item_count > 0 %}<small>{{ cart.item_count }}</small>{% endif %}</a>
+        <button class="sd-mobile-toggle" type="button" data-mobile-trigger aria-expanded="false" aria-controls="sd-mobile-nav" aria-label="Open menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 6h20M2 12h20M2 18h20"/></svg></button>
+      </div>
+    </div>
+    <div class="sd-mega" id="sd-mega-furniture" data-mega-panel="furniture" hidden>
+      <div class="sd-mega__lead"><a href="{{ routes.all_products_collection_url }}">Best Sellers</a><a href="{{ routes.all_products_collection_url }}?sort_by=created-descending">New Arrivals</a><a href="{{ routes.collections_url }}/slouchers">Shop All Sofas</a></div>
+      <div class="sd-mega__categories"><a href="{{ routes.collections_url }}/slouchers">Sofas &amp; Sectionals</a><a href="{{ routes.all_products_collection_url }}">Corner Sofas</a><a href="{{ routes.all_products_collection_url }}">Sofa Beds</a><a href="{{ routes.all_products_collection_url }}">Armchairs</a></div>
+      <div class="sd-mega__links"><a href="{{ routes.collections_url }}/slouchers">Shop All</a>{% for link in section.settings.furniture_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% for child in link.links %}<a href="{{ child.url }}">{{ child.title | escape }}</a>{% endfor %}{% endfor %}</div>
+      <a class="sd-mega__feature" href="{{ routes.collections_url }}/slouchers">Find your favourite sofa <span>↗</span></a>
+    </div>
+    <div class="sd-mega" id="sd-mega-rooms" data-mega-panel="rooms" hidden>
+      <div class="sd-mega__lead"><a href="{{ routes.collections_url }}/slouchers">Living Room</a><a href="{{ routes.all_products_collection_url }}">Lounge</a><a href="{{ routes.all_products_collection_url }}">Small Spaces</a></div>
+      <div class="sd-mega__categories"><a href="{{ routes.collections_url }}/slouchers">The everyday living room</a><a href="{{ routes.all_products_collection_url }}">Room to gather</a></div>
+      <div class="sd-mega__links">{% for link in section.settings.rooms_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}</div>
+    </div>
+    <div class="sd-mega" id="sd-mega-explore" data-mega-panel="explore" hidden>
+      <div class="sd-mega__lead"><a href="/pages/about-us">Our Story</a><a href="/pages/contact">Contact</a><a href="/blogs/news">Journal</a></div>
+      <div class="sd-mega__categories"><a href="/pages/delivery-returns">Delivery &amp; Returns</a><a href="/pages/faq">Frequently Asked Questions</a></div>
+      <div class="sd-mega__links">{% for link in section.settings.explore_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}</div>
+    </div>
+    <nav class="sd-mobile-nav" id="sd-mobile-nav" aria-label="Mobile navigation" hidden>
+      <a href="{{ routes.all_products_collection_url }}">Best Sellers</a>
+      <details><summary>Furniture</summary><a href="{{ routes.collections_url }}/slouchers">Shop all sofas</a>{% for link in section.settings.furniture_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}</details>
+      <details><summary>Rooms</summary><a href="{{ routes.collections_url }}/slouchers">Living Room</a>{% for link in section.settings.rooms_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}</details>
+      <details><summary>Explore</summary><a href="/pages/about-us">Our Story</a>{% for link in section.settings.explore_menu.links %}<a href="{{ link.url }}">{{ link.title | escape }}</a>{% endfor %}</details>
+      <a href="{{ routes.search_url }}">Search</a>
+    </nav>
+  </header>
+</div>
 {% schema %}
-{"name":"Header","settings":[{"type":"text","id":"announcement","label":"Announcement","default":"MADE FOR LIVING. MADE TO LAST."},{"type":"link_list","id":"menu","label":"Navigation menu"}]}
+{"name":"Header","settings":[{"type":"text","id":"announcement","label":"Announcement","default":"Beautiful furniture for real life."},{"type":"text","id":"announcement_cta","label":"Announcement link text","default":"Shop Now"},{"type":"url","id":"announcement_link","label":"Announcement destination"},{"type":"link_list","id":"furniture_menu","label":"Furniture menu"},{"type":"link_list","id":"rooms_menu","label":"Rooms menu"},{"type":"link_list","id":"explore_menu","label":"Explore menu"}]}
 {% endschema %}

@@ -1,0 +1,4 @@
+<section class="sd-intro sd-reveal"><div><h2>{{ section.settings.heading | escape }}</h2></div><div><p>{{ section.settings.body | escape }}</p><a class="sd-outline-button" href="{{ section.settings.link | default: '/pages/about-us' }}">{{ section.settings.link_text | escape }}</a></div></section>
+{% schema %}
+{"name":"Yellow introduction","settings":[{"type":"text","id":"heading","label":"Heading","default":"A better day begins at home."},{"type":"textarea","id":"body","label":"Body","default":"Settle into a sofa that makes every day feel a little easier. Thoughtful shapes, inviting fabrics, and room for everyone to get comfortable."},{"type":"text","id":"link_text","label":"Link label","default":"About Us"},{"type":"url","id":"link","label":"Link"}],"presets":[{"name":"Yellow introduction"}]}
+{% endschema %}

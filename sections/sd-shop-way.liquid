@@ -1,0 +1,13 @@
+<section class="sd-shop-way sd-reveal"><h2>{{ section.settings.heading | escape }}</h2><div class="sd-shop-way__tabs" role="tablist" aria-label="Shop your way"><button type="button" role="tab" aria-selected="true" data-shop-tab="furniture">Furniture</button><button type="button" role="tab" aria-selected="false" data-shop-tab="rooms">Rooms</button></div>
+  {% assign chosen_collection = section.settings.collection | default: collections['slouchers'] %}
+  <div class="sd-shop-way__grid" data-shop-panel="furniture" role="tabpanel">
+    {% for product in chosen_collection.products limit: 12 %}<a class="sd-shop-way__item" href="{{ product.url }}"><div class="sd-shop-way__image">{% if product.featured_image %}{{ product.featured_image | image_url: width: 500 | image_tag: loading: 'lazy', widths: '220, 350, 500', alt: product.title }}{% endif %}</div><span>{{ product.title | escape }}</span></a>{% endfor %}
+  </div>
+  <div class="sd-shop-way__grid" data-shop-panel="rooms" role="tabpanel" hidden>
+    {% for product in chosen_collection.products offset: 12 limit: 12 %}<a class="sd-shop-way__item" href="{{ product.url }}"><div class="sd-shop-way__image">{% if product.featured_image %}{{ product.featured_image | image_url: width: 500 | image_tag: loading: 'lazy', widths: '220, 350, 500', alt: product.title }}{% endif %}</div><span>{{ product.title | escape }}</span></a>{% endfor %}
+  </div>
+  <a class="sd-shop-way__all" href="{{ chosen_collection.url | default: routes.all_products_collection_url }}">Shop all sofas ↗</a>
+</section>
+{% schema %}
+{"name":"Shop your way","settings":[{"type":"text","id":"heading","label":"Heading","default":"Shop Your Way"},{"type":"collection","id":"collection","label":"Product collection"}],"presets":[{"name":"Shop your way"}]}
+{% endschema %}

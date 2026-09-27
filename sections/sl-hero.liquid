@@ -1,9 +1,21 @@
-<section class="sl-hero full-width">
-  <div class="sl-hero__media">{% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'eager', widths: '750, 1100, 1500, 2000, 2400', alt: section.settings.image.alt }}{% else %}<div class="sl-hero__placeholder">{{ 'lifestyle-1' | placeholder_svg_tag }}</div>{% endif %}</div>
-  <div class="sl-hero__shade"></div>
-  <div class="sl-hero__content"><h1>{{ section.settings.heading | escape }}</h1><p>{{ section.settings.subheading | escape }}</p><a class="sl-button" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a></div>
-  {% if section.settings.corner_text != blank %}<div class="sl-hero__corner">{{ section.settings.corner_text | escape }}</div>{% endif %}
+{% liquid
+  assign hero_product = section.settings.featured_product
+  if hero_product == blank
+    assign hero_product = collections['slouchers'].products.first
+  endif
+%}
+<section class="sd-hero" aria-label="{{ section.settings.heading | escape }}">
+  <div class="sd-hero__media">
+    {% if section.settings.image != blank %}
+      {{ section.settings.image | image_url: width: 2400 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1500, 2000, 2400', alt: section.settings.image.alt }}
+    {% elsif hero_product.featured_image != blank %}
+      {{ hero_product.featured_image | image_url: width: 2000 | image_tag: loading: 'eager', fetchpriority: 'high', widths: '750, 1100, 1500, 2000', alt: hero_product.title }}
+    {% endif %}
+  </div>
+  <div class="sd-hero__shade"></div>
+  <div class="sd-hero__content"><h1>{{ section.settings.heading | escape | newline_to_br }}</h1><a class="sd-outline-button sd-outline-button--light" href="{{ section.settings.button_link | default: routes.all_products_collection_url }}">{{ section.settings.button_label | escape }}</a></div>
+  <span class="sd-hero__index">01 / 01</span>
 </section>
 {% schema %}
-{"name":"Editorial hero","settings":[{"type":"image_picker","id":"image","label":"Hero photograph"},{"type":"text","id":"heading","label":"Heading","default":"Home, at last."},{"type":"text","id":"subheading","label":"Supporting text","default":"Beautifully made sofas for every kind of home."},{"type":"text","id":"button_label","label":"Button label","default":"Shop now"},{"type":"url","id":"button_link","label":"Button link"},{"type":"text","id":"corner_text","label":"Bottom right note","default":"Sit back. Stay awhile."}],"presets":[{"name":"Editorial hero"}]}
+{"name":"Editorial hero","settings":[{"type":"image_picker","id":"image","label":"Lifestyle image"},{"type":"product","id":"featured_product","label":"Fallback store product"},{"type":"textarea","id":"heading","label":"Heading","default":"Feel right\nat home."},{"type":"text","id":"button_label","label":"Button label","default":"Shop Now"},{"type":"url","id":"button_link","label":"Button link"}],"presets":[{"name":"Editorial hero"}]}
 {% endschema %}
