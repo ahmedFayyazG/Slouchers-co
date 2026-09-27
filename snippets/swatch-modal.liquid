@@ -1,0 +1,175 @@
+<div id="swatch-modal" class="swatch-modal">
+  <div class="swatch-modal__overlay"></div>
+  <div class="swatch-modal__content">
+    <button class="swatch-modal__close" aria-label="Close">&times;</button>
+    <h2>Choose Your Fabric</h2>
+    <div class="swatch-modal__grid" id="swatch-modal-grid">
+      <!-- Swatches will be populated by JavaScript -->
+    </div>
+  </div>
+</div>
+
+<style>
+.swatch-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+.swatch-modal.is-open {
+  display: block;
+}
+
+.swatch-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.swatch-modal__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 800px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.swatch-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 32px;
+  cursor: pointer;
+  color: #000;
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swatch-modal__close:hover {
+  opacity: 0.6;
+}
+
+.swatch-modal__content h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 32px;
+  letter-spacing: -0.02em;
+}
+
+.swatch-modal__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 24px;
+}
+
+.swatch-modal__fabric-group {
+  text-align: center;
+}
+
+.swatch-modal__fabric-type {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.swatch-modal__colors {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.swatch-modal__color {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.swatch-modal__color:hover {
+  border-color: #000;
+  transform: scale(1.05);
+}
+
+.swatch-modal__color-name {
+  font-size: 12px;
+  margin-top: 8px;
+  color: #666;
+}
+</style>
+
+<script>
+(function() {
+  const modal = document.getElementById('swatch-modal');
+  const overlay = modal.querySelector('.swatch-modal__overlay');
+  const closeBtn = modal.querySelector('.swatch-modal__close');
+  const grid = modal.querySelector('.swatch-modal__grid');
+
+  function openSwatchModal() {
+    // Load swatches from header
+    let swatchesData = window.swatchesData;
+
+    // Fetch if not already loaded
+    if (!swatchesData) {
+      fetch('{{ 'swatches.json' | asset_url }}')
+        .then(r => r.json())
+        .then(data => {
+          swatchesData = data;
+          renderSwatches(swatchesData);
+          modal.classList.add('is-open');
+        });
+    } else {
+      renderSwatches(swatchesData);
+      modal.classList.add('is-open');
+    }
+  }
+
+  function renderSwatches(data) {
+    if (!data || !data.swatches) return;
+
+    grid.innerHTML = data.swatches.map(fabricType => `
+      <div class="swatch-modal__fabric-group">
+        <div class="swatch-modal__fabric-type">${fabricType.type}</div>
+        <div class="swatch-modal__colors">
+          ${fabricType.colors.map(color => `
+            <div
+              class="swatch-modal__color"
+              style="background:${color.hex}"
+              title="${color.name}"
+              onclick="alert('Added ${color.name} to cart')"
+            ></div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function closeSwatchModal() {
+    modal.classList.remove('is-open');
+  }
+
+  // Event listeners
+  closeBtn.addEventListener('click', closeSwatchModal);
+  overlay.addEventListener('click', closeSwatchModal);
+
+  // Expose to global scope
+  window.openSwatchModal = openSwatchModal;
+})();
+</script>

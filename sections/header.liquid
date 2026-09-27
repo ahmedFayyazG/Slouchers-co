@@ -92,21 +92,8 @@
 
         <div class="sd-mega__tab-content" data-tab-content="fabric" style="display:none">
           <h4>FABRIC</h4>
-          <div class="sd-mega__fabric-grid">
-            <div class="sd-mega__fabric-card">
-              <div class="sd-mega__fabric-samples">
-                <div style="background:#1a1a1a"></div>
-                <div style="background:#3d3d3d"></div>
-                <div style="background:#6b6b6b"></div>
-                <div style="background:#a0a0a0"></div>
-                <div style="background:#d4af37"></div>
-              </div>
-              <p>Plush velvet</p>
-            </div>
-            <div class="sd-mega__fabric-card">
-              <div class="sd-mega__fabric-img" style="background:#c9b8a0"></div>
-              <p>Jumbo cord</p>
-            </div>
+          <div class="sd-mega__fabric-grid" id="fabrics-container">
+            <div style="grid-column:1/-1;text-align:center;padding:40px;color:#999">Loading swatches...</div>
           </div>
         </div>
       </div>
@@ -147,7 +134,34 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const tabBtns = document.querySelectorAll('.sd-mega__tab-btn');
+  let swatchesData = null;
 
+  // Load swatches
+  async function loadSwatches() {
+    try {
+      const response = await fetch('{{ 'swatches.json' | asset_url }}');
+      swatchesData = await response.json();
+      renderSwatches();
+    } catch (error) {
+      console.error('Error loading swatches:', error);
+    }
+  }
+
+  function renderSwatches() {
+    const container = document.getElementById('fabrics-container');
+    if (!swatchesData || !swatchesData.swatches) return;
+
+    container.innerHTML = swatchesData.swatches.map(fabricType => `
+      <div class="sd-mega__fabric-card">
+        <div class="sd-mega__fabric-samples">
+          ${fabricType.colors.map(color => `<div style="background:${color.hex}" title="${color.name}"></div>`).join('')}
+        </div>
+        <p>${fabricType.type}</p>
+      </div>
+    `).join('');
+  }
+
+  // Tab switching
   tabBtns.forEach(btn => {
     btn.addEventListener('click', function(e) {
       e.preventDefault();
@@ -171,7 +185,16 @@ document.addEventListener('DOMContentLoaded', function() {
       });
       // Show corresponding featured section
       document.getElementById(`featured-${tabName}`).style.display = 'flex';
+
+      // Load swatches when fabric tab is clicked
+      if (tabName === 'fabric' && !swatchesData) {
+        loadSwatches();
+      }
     });
   });
+
+  // Store swatches data globally for product pages
+  window.swatchesData = swatchesData;
+  loadSwatches();
 });
 </script>

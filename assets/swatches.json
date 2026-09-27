@@ -1,0 +1,54 @@
+{
+  "swatches": [
+    {
+      "type": "Plush Velvet",
+      "colors": [
+        { "name": "Charcoal", "hex": "#2a2a2a" },
+        { "name": "Navy", "hex": "#1a3a4a" },
+        { "name": "Emerald", "hex": "#2d5a4a" },
+        { "name": "Blush", "hex": "#d4a5a5" },
+        { "name": "Gold", "hex": "#d4af37" }
+      ]
+    },
+    {
+      "type": "Zara",
+      "colors": [
+        { "name": "Stone", "hex": "#c9b8a0" },
+        { "name": "Taupe", "hex": "#b5a89f" },
+        { "name": "Cream", "hex": "#e8dcc8" },
+        { "name": "Beige", "hex": "#d4c5b9" },
+        { "name": "Clay", "hex": "#a89f95" }
+      ]
+    },
+    {
+      "type": "Jumbo Cord",
+      "colors": [
+        { "name": "Wheat", "hex": "#e6d9c3" },
+        { "name": "Caramel", "hex": "#c4845c" },
+        { "name": "Toffee", "hex": "#8b6f47" },
+        { "name": "Sage", "hex": "#8b9a7f" },
+        { "name": "Slate", "hex": "#6b7d7f" }
+      ]
+    },
+    {
+      "type": "Linen",
+      "colors": [
+        { "name": "Natural", "hex": "#f0ebe5" },
+        { "name": "Ivory", "hex": "#fffff0" },
+        { "name": "Oatmeal", "hex": "#e8dcc8" },
+        { "name": "Dove", "hex": "#d3ccc0" },
+        { "name": "Charcoal", "hex": "#3a3a3a" }
+      ]
+    },
+    {
+      "type": "Leather",
+      "colors": [
+        { "name": "Black", "hex": "#1a1a1a" },
+        { "name": "Cognac", "hex": "#8b4513" },
+        { "name": "Chocolate", "hex": "#5a3d2a" },
+        { "name": "Camel", "hex": "#c4845c" },
+        { "name": "Cream", "hex": "#f5f0eb" }
+      ]
+    }
+  ]
+}
