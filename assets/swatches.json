@@ -1,53 +1,729 @@
 {
   "swatches": [
     {
-      "type": "Plush Velvet",
+      "type": "Plush",
       "colors": [
-        { "name": "Charcoal", "hex": "#2a2a2a" },
-        { "name": "Navy", "hex": "#1a3a4a" },
-        { "name": "Emerald", "hex": "#2d5a4a" },
-        { "name": "Blush", "hex": "#d4a5a5" },
-        { "name": "Gold", "hex": "#d4af37" }
+        {
+          "name": "Asphalt",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-asphalt.png?v=1790263011"
+        },
+        {
+          "name": "Bourneville",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-bourneville.png?v=1790263012"
+        },
+        {
+          "name": "Burnt Orange",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-burnt-orange.png?v=1790263012"
+        },
+        {
+          "name": "Cerise",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-cerise.png?v=1790263011"
+        },
+        {
+          "name": "Claret",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-claret.png?v=1790263012"
+        },
+        {
+          "name": "Cranberry",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-cranberry.png?v=1790263012"
+        },
+        {
+          "name": "Cream",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-cream.png?v=1790263012"
+        },
+        {
+          "name": "Ebony",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-ebony.png?v=1790263011"
+        },
+        {
+          "name": "Elephant",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-elephant.png?v=1790263012"
+        },
+        {
+          "name": "Emerald",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-emerald.png?v=1790263012"
+        },
+        {
+          "name": "Green",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-green.png?v=1790263011"
+        },
+        {
+          "name": "Grey",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-grey.png?v=1790263012"
+        },
+        {
+          "name": "Khaki",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-khaki.png?v=1790263012"
+        },
+        {
+          "name": "Lilac",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-lilac.png?v=1790263011"
+        },
+        {
+          "name": "Lime",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-lime.png?v=1790263012"
+        },
+        {
+          "name": "Marine",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-marine.png?v=1790263012"
+        },
+        {
+          "name": "Marmalade",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-marmalade.png?v=1790263012"
+        },
+        {
+          "name": "Mink",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-mink.png?v=1790263012"
+        },
+        {
+          "name": "Mole",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-mole.png?v=1790263012"
+        },
+        {
+          "name": "Mustard",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-mustard.png?v=1790263012"
+        },
+        {
+          "name": "Navy",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-navy.png?v=1790263011"
+        },
+        {
+          "name": "New Teal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-new-teal.png?v=1790263011"
+        },
+        {
+          "name": "Olive",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-olive.png?v=1790263011"
+        },
+        {
+          "name": "Oxblood",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-oxblood.png?v=1790263012"
+        },
+        {
+          "name": "Pebble",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-pebble.png?v=1790263012"
+        },
+        {
+          "name": "Pink",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-pink.png?v=1790263012"
+        },
+        {
+          "name": "Plum",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-plum.png?v=1790263012"
+        },
+        {
+          "name": "Red",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-red.png?v=1790263012"
+        },
+        {
+          "name": "Rose",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-rose.png?v=1790263012"
+        },
+        {
+          "name": "Silver",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-silver.png?v=1790263012"
+        },
+        {
+          "name": "Sky",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-sky.png?v=1790263011"
+        },
+        {
+          "name": "Street",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-street.png?v=1790263012"
+        },
+        {
+          "name": "Teal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-teal.png?v=1790263012"
+        },
+        {
+          "name": "Turquoise",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/plush-turquoise.png?v=1790263012"
+        }
+      ]
+    },
+    {
+      "type": "Venus",
+      "colors": [
+        {
+          "name": "Grey",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-grey.png?v=1790263011"
+        },
+        {
+          "name": "Amber",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-amber.png?v=1790263011"
+        },
+        {
+          "name": "Aubergine",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-aubergine.png?v=1790263011"
+        },
+        {
+          "name": "Black",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-black.png?v=1790263011"
+        },
+        {
+          "name": "Brick",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-brick.png?v=1790263011"
+        },
+        {
+          "name": "Bronze",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-bronze.png?v=1790263011"
+        },
+        {
+          "name": "Burgundy",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-burgundy.png?v=1790263011"
+        },
+        {
+          "name": "Mauve",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-mauve.png?v=1790263011"
+        },
+        {
+          "name": "Mocha",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-mocha.png?v=1790263011"
+        },
+        {
+          "name": "Moss",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-moss.png?v=1790263011"
+        },
+        {
+          "name": "Mustard",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-mustard.png?v=1790263011"
+        },
+        {
+          "name": "Navy",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-navy.png?v=1790263011"
+        },
+        {
+          "name": "Olive",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-olive.png?v=1790263011"
+        },
+        {
+          "name": "Petrol",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-petrol.png?v=1790263011"
+        },
+        {
+          "name": "Sage",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-sage.png?v=1790263011"
+        },
+        {
+          "name": "Sienna",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-sienna.png?v=1790263011"
+        },
+        {
+          "name": "Slate",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-slate.png?v=1790263011"
+        },
+        {
+          "name": "Taupe",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-taupe.png?v=1790263011"
+        },
+        {
+          "name": "Teal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-teal.png?v=1790263011"
+        },
+        {
+          "name": "Terracotta",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/venus-terracotta.png?v=1790263011"
+        }
+      ]
+    },
+    {
+      "type": "Lisbon",
+      "colors": [
+        {
+          "name": "Amber",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/lisbon-amber.png?v=1790263011"
+        },
+        {
+          "name": "Camel",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/lisbon-camel.png?v=1790263011"
+        },
+        {
+          "name": "Charcoal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/lisbon-charcoal.png?v=1790263011"
+        },
+        {
+          "name": "Dove",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/lisbon-dove.png?v=1790263011"
+        },
+        {
+          "name": "Espresso",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/lisbon-espresso.png?v=1790263011"
+        },
+        {
+          "name": "Graphite",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/lisbon-graphite.png?v=1790263011"
+        },
+        {
+          "name": "Mocha",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/lisbon-mocha.png?v=1790263011"
+        },
+        {
+          "name": "Olive",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/lisbon-olive.png?v=1790263011"
+        },
+        {
+          "name": "Sand",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/lisbon-sand.png?v=1790263011"
+        },
+        {
+          "name": "Slate",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/lisbon-slate.png?v=1790263011"
+        },
+        {
+          "name": "Taupe",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/lisbon-taupe.png?v=1790263011"
+        },
+        {
+          "name": "Teal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/lisbon-teal.png?v=1790263011"
+        },
+        {
+          "name": "Wheat",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/lisbon-wheat.png?v=1790263011"
+        }
       ]
     },
     {
       "type": "Zara",
       "colors": [
-        { "name": "Stone", "hex": "#c9b8a0" },
-        { "name": "Taupe", "hex": "#b5a89f" },
-        { "name": "Cream", "hex": "#e8dcc8" },
-        { "name": "Beige", "hex": "#d4c5b9" },
-        { "name": "Clay", "hex": "#a89f95" }
+        {
+          "name": "Airforce",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-airforce.png?v=1790263011"
+        },
+        {
+          "name": "Beige",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-beige.png?v=1790263011"
+        },
+        {
+          "name": "Blush",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-blush.png?v=1790263011"
+        },
+        {
+          "name": "Camel",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-camel.png?v=1790263011"
+        },
+        {
+          "name": "Coco",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-coco.png?v=1790263011"
+        },
+        {
+          "name": "Denim",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-denim.png?v=1790263011"
+        },
+        {
+          "name": "Iron",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-iron.png?v=1790263011"
+        },
+        {
+          "name": "Mauve",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-mauve.png?v=1790263011"
+        },
+        {
+          "name": "Mink",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-mink.png?v=1790263011"
+        },
+        {
+          "name": "Mint",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-mint.png?v=1790263011"
+        },
+        {
+          "name": "Moss",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-moss.png?v=1790263011"
+        },
+        {
+          "name": "Navy",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-navy.png?v=1790263011"
+        },
+        {
+          "name": "Taupe",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-taupe.png?v=1790263011"
+        },
+        {
+          "name": "Teal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-teal.png?v=1790263011"
+        },
+        {
+          "name": "Tusban",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/zara-tusban.png?v=1790263011"
+        }
       ]
     },
     {
-      "type": "Jumbo Cord",
+      "type": "Kensington",
       "colors": [
-        { "name": "Wheat", "hex": "#e6d9c3" },
-        { "name": "Caramel", "hex": "#c4845c" },
-        { "name": "Toffee", "hex": "#8b6f47" },
-        { "name": "Sage", "hex": "#8b9a7f" },
-        { "name": "Slate", "hex": "#6b7d7f" }
+        {
+          "name": "Citrus",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-citrus.png?v=1790263011"
+        },
+        {
+          "name": "Almond",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-almond.png?v=1790263011"
+        },
+        {
+          "name": "Black",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-black.png?v=1790263010"
+        },
+        {
+          "name": "Bronze",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-bronze.png?v=1790263011"
+        },
+        {
+          "name": "Burgundy",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-burgundy.png?v=1790263011"
+        },
+        {
+          "name": "Camel",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-camel.png?v=1790263011"
+        },
+        {
+          "name": "Charcoal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-charcoal.png?v=1790263011"
+        },
+        {
+          "name": "Emerald",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-emerald.png?v=1790263011"
+        },
+        {
+          "name": "Gold",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-gold.png?v=1790263011"
+        },
+        {
+          "name": "Graphite",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-graphite.png?v=1790263011"
+        },
+        {
+          "name": "Marine",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-marine.png?v=1790263011"
+        },
+        {
+          "name": "Mocha",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-mocha.png?v=1790263010"
+        },
+        {
+          "name": "Moss",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-moss.png?v=1790263011"
+        },
+        {
+          "name": "Mustard",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-mustard.png?v=1790263011"
+        },
+        {
+          "name": "Navy",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-navy.png?v=1790263011"
+        },
+        {
+          "name": "Nutmeg",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-nutmeg.png?v=1790263011"
+        },
+        {
+          "name": "Olive",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-olive.png?v=1790263011"
+        },
+        {
+          "name": "Putty",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-putty.png?v=1790263011"
+        },
+        {
+          "name": "Sage",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-sage.png?v=1790263011"
+        },
+        {
+          "name": "Slate",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-slate.png?v=1790263011"
+        },
+        {
+          "name": "Teal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/kensington-teal.png?v=1790263011"
+        }
       ]
     },
     {
-      "type": "Linen",
+      "type": "Valveteen",
       "colors": [
-        { "name": "Natural", "hex": "#f0ebe5" },
-        { "name": "Ivory", "hex": "#fffff0" },
-        { "name": "Oatmeal", "hex": "#e8dcc8" },
-        { "name": "Dove", "hex": "#d3ccc0" },
-        { "name": "Charcoal", "hex": "#3a3a3a" }
+        {
+          "name": "Aubergine",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/valveteen-aubergine.png?v=1790263011"
+        },
+        {
+          "name": "Black",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/valveteen-black.png?v=1790263011"
+        },
+        {
+          "name": "Blush",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/valveteen-blush.png?v=1790263011"
+        },
+        {
+          "name": "Charcoal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/valveteen-charcoal.png?v=1790263011"
+        },
+        {
+          "name": "Emerald",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/valveteen-emerald.png?v=1790263010"
+        },
+        {
+          "name": "Green",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/valveteen-green.png?v=1790263011"
+        },
+        {
+          "name": "Magenta",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/valveteen-magenta.png?v=1790263011"
+        },
+        {
+          "name": "Maroon",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/valveteen-maroon.png?v=1790263011"
+        },
+        {
+          "name": "Mustard",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/valveteen-mustard.png?v=1790263010"
+        },
+        {
+          "name": "Navy",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/valveteen-navy.png?v=1790263011"
+        },
+        {
+          "name": "Olive",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/valveteen-olive.png?v=1790263011"
+        },
+        {
+          "name": "Rust",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/valveteen-rust.png?v=1790263011"
+        },
+        {
+          "name": "Steel",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/valveteen-steel.png?v=1790263010"
+        },
+        {
+          "name": "Taupe",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/valveteen-taupe.png?v=1790263010"
+        }
       ]
     },
     {
-      "type": "Leather",
+      "type": "Fernando",
       "colors": [
-        { "name": "Black", "hex": "#1a1a1a" },
-        { "name": "Cognac", "hex": "#8b4513" },
-        { "name": "Chocolate", "hex": "#5a3d2a" },
-        { "name": "Camel", "hex": "#c4845c" },
-        { "name": "Cream", "hex": "#f5f0eb" }
+        {
+          "name": "Amber",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-amber.png?v=1790263011"
+        },
+        {
+          "name": "Apple",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-apple.png?v=1790263011"
+        },
+        {
+          "name": "Chocolate",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-chocolate.png?v=1790263011"
+        },
+        {
+          "name": "Coral",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-coral.png?v=1790263011"
+        },
+        {
+          "name": "Cream",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-cream.png?v=1790263011"
+        },
+        {
+          "name": "Forest",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-forest.png?v=1790263011"
+        },
+        {
+          "name": "Granite",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-granite.png?v=1790263011"
+        },
+        {
+          "name": "Ivory",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-ivory.png?v=1790263011"
+        },
+        {
+          "name": "Moss",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-moss.png?v=1790263011"
+        },
+        {
+          "name": "Mustard",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-mustard.png?v=1790263011"
+        },
+        {
+          "name": "Navy",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-navy.png?v=1790263011"
+        },
+        {
+          "name": "Olive",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-olive.png?v=1790263011"
+        },
+        {
+          "name": "Orange",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-orange.png?v=1790263011"
+        },
+        {
+          "name": "Sage",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-sage.png?v=1790263011"
+        },
+        {
+          "name": "Slate",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-slate.png?v=1790263011"
+        },
+        {
+          "name": "Taupe",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/fernando-taupe.png?v=1790263011"
+        }
+      ]
+    },
+    {
+      "type": "Surrey",
+      "colors": [
+        {
+          "name": "Black",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/surrey-black.png?v=1790263011"
+        },
+        {
+          "name": "Charcoal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/surrey-charcoal.png?v=1790263010"
+        },
+        {
+          "name": "Cream",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/surrey-cream.png?v=1790263011"
+        },
+        {
+          "name": "Graphite",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/surrey-graphite.png?v=1790263011"
+        },
+        {
+          "name": "Lightgrey",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/surrey-lightgrey.png?v=1790263010"
+        },
+        {
+          "name": "Mustard",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/surrey-mustard.png?v=1790263011"
+        },
+        {
+          "name": "Navy",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/surrey-navy.png?v=1790263010"
+        },
+        {
+          "name": "Rust",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/surrey-rust.png?v=1790263011"
+        },
+        {
+          "name": "Sage",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/surrey-sage.png?v=1790263011"
+        },
+        {
+          "name": "Taupe",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/surrey-taupe.png?v=1790263011"
+        },
+        {
+          "name": "Teal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/surrey-teal.png?v=1790263011"
+        }
+      ]
+    },
+    {
+      "type": "Adele",
+      "colors": [
+        {
+          "name": "Blush",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/adele-blush.png?v=1790263011"
+        },
+        {
+          "name": "Brown",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/adele-brown.png?v=1790263011"
+        },
+        {
+          "name": "Burgundy",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/adele-burgundy.png?v=1790263011"
+        },
+        {
+          "name": "Charcoal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/adele-charcoal.png?v=1790263011"
+        },
+        {
+          "name": "Lightgrey",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/adele-lightgrey.png?v=1790263011"
+        },
+        {
+          "name": "Mauve",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/adele-mauve.png?v=1790263011"
+        },
+        {
+          "name": "Navy",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/adele-navy.png?v=1790263011"
+        },
+        {
+          "name": "Olivegrey",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/adele-olivegrey.png?v=1790263011"
+        },
+        {
+          "name": "Plum",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/adele-plum.png?v=1790263011"
+        },
+        {
+          "name": "Sage",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/adele-sage.png?v=1790263011"
+        },
+        {
+          "name": "Steel",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/adele-steel.png?v=1790263011"
+        },
+        {
+          "name": "Taupe",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/adele-taupe.png?v=1790263011"
+        }
+      ]
+    },
+    {
+      "type": "Teddy",
+      "colors": [
+        {
+          "name": "Blush",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/teddy-blush.png?v=1790263011"
+        },
+        {
+          "name": "Burgundy",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/teddy-burgundy.png?v=1790263011"
+        },
+        {
+          "name": "Charcoal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/teddy-charcoal.png?v=1790263011"
+        },
+        {
+          "name": "Chocolate",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/teddy-chocolate.png?v=1790263011"
+        },
+        {
+          "name": "Graphite",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/teddy-graphite.png?v=1790263011"
+        },
+        {
+          "name": "Grey",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/teddy-grey.png?v=1790263011"
+        },
+        {
+          "name": "Oatmeal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/teddy-oatmeal.png?v=1790263011"
+        },
+        {
+          "name": "Rust",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/teddy-rust.png?v=1790263011"
+        },
+        {
+          "name": "Sage",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/teddy-sage.png?v=1790263011"
+        },
+        {
+          "name": "Slate",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/teddy-slate.png?v=1790263011"
+        },
+        {
+          "name": "Stone",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/teddy-stone.png?v=1790263011"
+        },
+        {
+          "name": "Teal",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/teddy-teal.png?v=1790263011"
+        },
+        {
+          "name": "White",
+          "image": "https://cdn.shopify.com/s/files/1/1113/6771/7202/files/teddy-white.png?v=1790263011"
+        }
       ]
     }
   ]
