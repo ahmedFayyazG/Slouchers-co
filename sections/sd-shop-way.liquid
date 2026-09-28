@@ -11,13 +11,13 @@
   <div class="sd-shop-way__grid" id="sd-panel-furniture" data-shop-panel="furniture" role="tabpanel" aria-labelledby="sd-tab-furniture">
     {% for title in furniture_titles %}
       {% assign img = furniture_images[forloop.index0] %}
-      <a class="sd-shop-way__item" href="{{ routes.collections_url }}/slouchers"><div class="sd-shop-way__image"><img src="{{ img | asset_url }}" alt="" loading="lazy" width="700" height="438"></div><span>{{ title | escape }}</span></a>
+      <a class="sd-shop-way__item" href="{{ routes.all_products_collection_url }}"><div class="sd-shop-way__image"><img src="{{ img | asset_url }}" alt="" loading="lazy" width="700" height="438"></div><span>{{ title | escape }}</span></a>
     {% endfor %}
   </div>
   <div class="sd-shop-way__grid sd-shop-way__grid--rooms" id="sd-panel-rooms" data-shop-panel="rooms" role="tabpanel" aria-labelledby="sd-tab-rooms" hidden>
     {% for title in room_titles %}
       {% assign img = room_images[forloop.index0] %}
-      <a class="sd-shop-way__item" href="{{ routes.collections_url }}/slouchers"><div class="sd-shop-way__image"><img src="{{ img | asset_url }}" alt="" loading="lazy" width="1000" height="800"></div><span>{{ title | escape }}</span></a>
+      <a class="sd-shop-way__item" href="{{ routes.all_products_collection_url }}"><div class="sd-shop-way__image"><img src="{{ img | asset_url }}" alt="" loading="lazy" width="1000" height="800"></div><span>{{ title | escape }}</span></a>
     {% endfor %}
   </div>
 </section>

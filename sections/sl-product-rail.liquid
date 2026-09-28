@@ -1,16 +1,17 @@
 {% liquid
   assign chosen_collection = section.settings.collection
   if chosen_collection == blank
-    assign chosen_collection = collections['slouchers']
-  endif
-  if chosen_collection == blank
     assign chosen_collection = collections.all
   endif
+  if chosen_collection.products_count == 0
+    assign chosen_collection = collections.all
+  endif
+  assign rail_products = chosen_collection.products | sort: 'published_at' | reverse
 %}
 <section class="sl-section sl-product-rail">
   <div class="sl-section-heading"><h2>{{ section.settings.heading | escape }}</h2></div>
   <div class="sl-scroll-wrap"><div class="sl-product-rail__track">
-    {% for product in chosen_collection.products offset: section.settings.offset limit: 10 %}
+    {% for product in rail_products offset: section.settings.offset limit: 10 %}
       {% render 'sl-product-card', product: product %}
     {% else %}
       {% for i in (1..4) %}<div class="sl-product-card"><div class="sl-product-card__media">{{ 'product-1' | placeholder_svg_tag }}</div><div class="sl-product-card__info"><h3>Product {{ i }}</h3></div></div>{% endfor %}

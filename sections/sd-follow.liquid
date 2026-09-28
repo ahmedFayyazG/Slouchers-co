@@ -1,5 +1,14 @@
-{% assign social_collection = section.settings.collection | default: collections['slouchers'] %}
-<section class="sd-follow"><div class="sd-follow__heading"><h2>{{ section.settings.heading | escape }}</h2><a href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.link_label | escape }}</a></div><div class="sd-follow__grid">{% for product in social_collection.products limit: 5 %}<a href="{{ product.url }}">{% if product.featured_image %}{{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: product.title }}{% endif %}</a>{% endfor %}</div></section>
+{% liquid
+  assign social_collection = section.settings.collection
+  if social_collection == blank
+    assign social_collection = collections.all
+  endif
+  if social_collection.products_count == 0
+    assign social_collection = collections.all
+  endif
+  assign social_products = social_collection.products | sort: 'published_at' | reverse
+%}
+<section class="sd-follow"><div class="sd-follow__heading"><h2>{{ section.settings.heading | escape }}</h2><a href="{{ section.settings.link | default: social_collection.url | default: routes.all_products_collection_url }}">{{ section.settings.link_label | escape }}</a></div><div class="sd-follow__grid">{% for product in social_products limit: 5 %}<a href="{{ product.url }}">{% if product.featured_image %}{{ product.featured_image | image_url: width: 700 | image_tag: loading: 'lazy', alt: product.title }}{% endif %}</a>{% endfor %}</div></section>
 {% schema %}
 {"name":"Follow us gallery","settings":[{"type":"text","id":"heading","label":"Heading","default":"Follow Us"},{"type":"text","id":"link_label","label":"Link label","default":"@slouchersandco"},{"type":"url","id":"link","label":"Social link"},{"type":"collection","id":"collection","label":"Product collection"}],"presets":[{"name":"Follow us gallery"}]}
 {% endschema %}

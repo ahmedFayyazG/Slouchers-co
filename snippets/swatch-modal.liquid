@@ -77,7 +77,9 @@ Renders the global fabric swatch drawer. Swatches are loaded from the Shopify th
 
   function allSwatches(data) {
     const seen = new Set();
-    return [...(window.SlouchersInlineSwatches || []), ...flattenSwatches(data)].filter((swatch) => {
+    const databaseSwatches = window.SlouchersDatabaseSwatches || [];
+    const sources = databaseSwatches.length ? databaseSwatches : [...(window.SlouchersInlineSwatches || []), ...flattenSwatches(data)];
+    return sources.filter((swatch) => {
       const key = `${swatch.fabric}::${swatch.name}`;
       if (seen.has(key)) return false;
       seen.add(key);

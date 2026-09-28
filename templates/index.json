@@ -5,7 +5,7 @@
       "settings": {
         "heading": "Home should\nfeel like Slouchers.",
         "button_label": "Shop Now",
-        "button_link": "/collections/slouchers"
+        "button_link": "/collections/all"
       }
     },
     "intro": {
@@ -20,7 +20,7 @@
       "type": "sd-shop-way",
       "settings": {
         "heading": "Shop Your Way",
-        "collection": "slouchers"
+        "collection": "all"
       }
     },
     "benefits": {
@@ -64,7 +64,7 @@
         "heading": "A room to call your own",
         "body": "Make room for softer mornings, unhurried afternoons, and evenings that last a little longer.",
         "link_label": "Read More",
-        "collection": "slouchers"
+        "collection": "all"
       }
     },
     "marquee": {
@@ -77,28 +77,28 @@
           "type": "item",
           "settings": {
             "title": "Corner Sofas",
-            "link": "/collections/slouchers"
+            "link": "/collections/all"
           }
         },
         "modular": {
           "type": "item",
           "settings": {
             "title": "Modular Sofas",
-            "link": "/collections/slouchers"
+            "link": "/collections/all"
           }
         },
         "chaise": {
           "type": "item",
           "settings": {
             "title": "Chaise Sofas",
-            "link": "/collections/slouchers"
+            "link": "/collections/all"
           }
         },
         "armchairs": {
           "type": "item",
           "settings": {
             "title": "Armchairs",
-            "link": "/collections/slouchers"
+            "link": "/collections/all"
           }
         }
       },
@@ -122,7 +122,7 @@
             "quote": "Make yourself comfortable. Stay as long as you like.",
             "author": "SLOUCHERS & CO.",
             "link_label": "Shop sofas",
-            "link": "/collections/slouchers"
+            "link": "/collections/all"
           }
         }
       },
@@ -135,7 +135,7 @@
       "settings": {
         "heading": "Follow Us",
         "link_label": "@slouchersandco",
-        "collection": "slouchers"
+        "collection": "all"
       }
     },
     "family": {
@@ -144,7 +144,7 @@
         "heading": "A home for every kind of day",
         "body": "A good sofa changes the way a room feels. Find one that makes space for every moment.",
         "link_label": "Explore the collection",
-        "link": "/collections/slouchers"
+        "link": "/collections/all"
       }
     }
   },

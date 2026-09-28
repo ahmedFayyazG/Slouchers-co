@@ -3,6 +3,10 @@
 {% endcomment %}
 {% assign cozey_product = product %}
 {% assign chosen_variant = cozey_product.selected_or_first_available_variant %}
+{% assign swatch_metaobject_type = section.settings.swatch_metaobject_type | default: 'swatches' %}
+{% assign swatch_fabric_field = section.settings.swatch_fabric_field | default: 'first_name' %}
+{% assign swatch_color_field = section.settings.swatch_color_field | default: 'second_name' %}
+{% assign swatch_image_field = section.settings.swatch_image_field | default: 'image' %}
 {% if cozey_product.featured_image %}
   {% assign active_image = cozey_product.featured_image | image_url: width: 1400 %}
 {% else %}
@@ -71,6 +75,94 @@
           {%- endfor -%}
         {%- endif -%}
       {%- endfor -%}
+    ]
+  </script>
+  <script type="application/json" data-shopify-swatches>
+    [
+      {%- assign first_db_swatch = true -%}
+      {%- assign swatch_entries = metaobjects[swatch_metaobject_type].values -%}
+      {%- if swatch_entries == blank -%}
+        {%- assign swatch_entries = metaobjects.swatch.values -%}
+      {%- endif -%}
+      {%- if swatch_entries == blank -%}
+        {%- assign swatch_entries = metaobjects.fabric_swatch.values -%}
+      {%- endif -%}
+      {%- if swatch_entries == blank -%}
+        {%- assign swatch_entries = metaobjects.fabric_swatches.values -%}
+      {%- endif -%}
+      {%- if swatch_entries == blank -%}
+        {%- assign swatch_entries = metaobjects.fabric.values -%}
+      {%- endif -%}
+      {%- if swatch_entries == blank -%}
+        {%- assign swatch_entries = metaobjects.fabrics.values -%}
+      {%- endif -%}
+      {%- paginate swatch_entries by 250 -%}
+        {%- for entry in swatch_entries -%}
+          {%- liquid
+            assign fabric_value = entry[swatch_fabric_field].value
+            if fabric_value == blank
+              assign fabric_value = entry.fabric.value
+            endif
+            if fabric_value == blank
+              assign fabric_value = entry.first_name.value
+            endif
+            if fabric_value == blank
+              assign fabric_value = entry.name.value
+            endif
+            if fabric_value == blank
+              assign fabric_value = entry.title.value
+            endif
+
+            assign color_value = entry[swatch_color_field].value
+            if color_value == blank
+              assign color_value = entry.color.value
+            endif
+            if color_value == blank
+              assign color_value = entry.colour.value
+            endif
+            if color_value == blank
+              assign color_value = entry.second_name.value
+            endif
+            if color_value == blank
+              assign color_value = entry.color_name.value
+            endif
+            if color_value == blank
+              assign color_value = entry.colour_name.value
+            endif
+
+            assign image_value = entry[swatch_image_field].value
+            if image_value == blank
+              assign image_value = entry.image.value
+            endif
+            if image_value == blank
+              assign image_value = entry.swatch_image.value
+            endif
+            if image_value == blank
+              assign image_value = entry.swatch.value
+            endif
+            if image_value == blank
+              assign image_value = entry.photo.value
+            endif
+            if image_value == blank
+              assign image_value = entry.file.value
+            endif
+            assign image_url_value = entry.image_url.value
+            if image_url_value == blank
+              assign image_url_value = entry.url.value
+            endif
+          -%}
+          {%- if fabric_value != blank and color_value != blank -%}
+            {%- unless first_db_swatch -%},{%- endunless -%}
+            {
+              "fabric": {{ fabric_value | json }},
+              "name": {{ color_value | json }},
+              "hex": "",
+              "image": {%- if image_value != blank -%}{{ image_value | image_url: width: 240 | json }}{%- elsif image_url_value != blank -%}{{ image_url_value | json }}{%- else -%}""{%- endif -%}
+            }
+            {%- assign first_db_swatch = false -%}
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endpaginate -%}
     ]
   </script>
 </section>
@@ -143,6 +235,16 @@
     }
   }
 
+  function getDatabaseSwatches() {
+    const source = root.querySelector('[data-shopify-swatches]');
+    if (!source) return [];
+    try {
+      return JSON.parse(source.textContent).filter((swatch) => swatch.fabric && swatch.name);
+    } catch (error) {
+      return [];
+    }
+  }
+
   function flattenSwatches(data) {
     if (!data || !Array.isArray(data.swatches)) return [];
     return data.swatches.flatMap((group) => {
@@ -158,7 +260,9 @@
 
   function allSwatches(data) {
     const seen = new Set();
-    return [...getProductSwatches(), ...flattenSwatches(data)].filter((swatch) => {
+    const databaseSwatches = getDatabaseSwatches();
+    const sources = databaseSwatches.length ? databaseSwatches : [...getProductSwatches(), ...flattenSwatches(data)];
+    return sources.filter((swatch) => {
       const key = `${swatch.fabric}::${swatch.name}`;
       if (seen.has(key)) return false;
       seen.add(key);
@@ -185,6 +289,7 @@
     const swatches = allSwatches(data);
     if (!swatches.length) return;
     window.SlouchersInlineSwatches = getProductSwatches();
+    window.SlouchersDatabaseSwatches = getDatabaseSwatches();
     swatchPreview.removeAttribute('data-loading');
     swatchCount.textContent = `${swatches.length} fabrics available`;
     swatchPreview.innerHTML = swatches.slice(0, 8).map((swatch, index) => `
@@ -205,6 +310,7 @@
 
   async function loadSwatches() {
     window.SlouchersInlineSwatches = getProductSwatches();
+    window.SlouchersDatabaseSwatches = getDatabaseSwatches();
     swatchPreview.setAttribute('data-loading', 'true');
     if (window.SlouchersSwatchesData) {
       renderPreview(window.SlouchersSwatchesData);
@@ -250,5 +356,5 @@
 })();
 </script>
 {% schema %}
-{"name":"Product details","settings":[],"presets":[{"name":"Product details"}]}
+{"name":"Product details","settings":[{"type":"text","id":"swatch_metaobject_type","label":"Swatch metaobject type","default":"swatches"},{"type":"text","id":"swatch_fabric_field","label":"Fabric field key","default":"first_name"},{"type":"text","id":"swatch_color_field","label":"Colour field key","default":"second_name"},{"type":"text","id":"swatch_image_field","label":"Swatch image field key","default":"image"}],"presets":[{"name":"Product details"}]}
 {% endschema %}

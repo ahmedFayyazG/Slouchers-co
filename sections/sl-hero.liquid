@@ -1,7 +1,7 @@
 {% liquid
   assign hero_product = section.settings.featured_product
   if hero_product == blank
-    assign hero_product = collections['slouchers'].products.first
+    assign hero_product = collections.all.products.first
   endif
 %}
 <section class="sd-hero" aria-label="{{ section.settings.heading | escape }}">

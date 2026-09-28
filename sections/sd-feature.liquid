@@ -1,5 +1,15 @@
+{% liquid
+  assign showcase = section.settings.collection
+  if showcase == blank
+    assign showcase = collections.all
+  endif
+  if showcase.products_count == 0
+    assign showcase = collections.all
+  endif
+  assign showcase_products = showcase.products | sort: 'published_at' | reverse
+%}
 <section class="sd-feature">
-  <div class="sd-feature__copy"><span>{{ section.settings.eyebrow | escape }}</span><h2>{{ section.settings.heading | escape }}</h2><p>{{ section.settings.body | escape }}</p><a class="sd-outline-button" href="{{ section.settings.link | default: routes.all_products_collection_url }}">{{ section.settings.link_label | escape }}</a></div>
+  <div class="sd-feature__copy"><span>{{ section.settings.eyebrow | escape }}</span><h2>{{ section.settings.heading | escape }}</h2><p>{{ section.settings.body | escape }}</p><a class="sd-outline-button" href="{{ section.settings.link | default: showcase.url | default: routes.all_products_collection_url }}">{{ section.settings.link_label | escape }}</a></div>
   <div class="sd-feature__visual">
     {% if section.settings.image != blank %}{{ section.settings.image | image_url: width: 1800 | image_tag: loading: 'lazy', widths: '800, 1300, 1800', alt: section.settings.heading }}{% else %}<img src="{{ 'reference-feature-main.jpg' | asset_url }}" loading="lazy" width="1600" height="900" alt="Warm interior design studio">{% endif %}
     <div class="sd-feature__gallery">
@@ -8,8 +18,7 @@
       <img src="{{ 'reference-feature-03.jpg' | asset_url }}" loading="lazy" width="900" height="900" alt="">
       <img src="{{ 'reference-feature-04.jpg' | asset_url }}" loading="lazy" width="900" height="900" alt="">
     </div>
-    {% assign showcase = section.settings.collection | default: collections['slouchers'] %}
-    <div class="sd-feature__products">{% for product in showcase.products limit: 4 %}{% render 'sl-product-card', product: product %}{% endfor %}</div>
+    <div class="sd-feature__products">{% for product in showcase_products limit: 4 %}{% render 'sl-product-card', product: product %}{% endfor %}</div>
   </div>
 </section>
 {% schema %}
